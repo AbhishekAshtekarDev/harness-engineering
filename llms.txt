@@ -1,0 +1,34 @@
+# Harness Engineering: The Free, Complete Course
+
+> A free course on harness engineering: designing the system around an AI agent (instructions, context, tools, sandboxes, permissions, state, memory, guardrails, tests, evals, observability, feedback, loops, graphs and human control) so it completes useful work reliably. 18 lessons, 11 tested Python projects, 12 videos and a small teaching harness, harnesslab.
+
+Definition: Harness engineering is the practice of designing the system around an AI agent so the agent has the information, tools, environment, constraints, feedback, and control mechanisms it needs to complete useful work reliably.
+
+## Lessons
+- [What harness engineering is](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/01-what-is-harness-engineering.md)
+- [How an AI agent works](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/02-how-an-agent-works.md)
+- [The layers: prompt to harness](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/03-the-layers.md)
+- [Instructions and AGENTS.md](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/04-instructions-and-agents-md.md)
+- [Context engineering for harnesses](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/05-context-engineering.md)
+- [Tools, MCP and Agent Skills](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/06-tools-mcp-and-skills.md)
+- [Sandboxes, permissions and security](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/07-sandboxes-permissions-and-security.md)
+- [State, memory and long-running work](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/08-state-memory-and-long-running-work.md)
+- [Guardrails, tests and evals](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/09-guardrails-tests-and-evals.md)
+- [Logs, traces and observability](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/10-observability.md)
+- [Feedback, verification and the steering loop](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/11-feedback-verification-and-steering.md)
+- [Loop engineering](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/12-loop-engineering.md)
+- [Graphs and multi-agent systems](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/13-graphs-and-multi-agent-systems.md)
+- [Build a complete harness](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/14-build-a-complete-harness.md)
+- [Diagnosing agent failures](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/15-diagnosing-agent-failures.md)
+- [Harness engineering in production](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/16-harness-engineering-in-production.md)
+- [Harnesses beyond coding](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/17-harnesses-beyond-coding.md)
+- [Real harnesses: case studies](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/18-case-studies.md)
+
+## Reference
+- [Harness checklist](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/harness-checklist.md)
+- [Failure diagnosis table](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/failure-diagnosis.md)
+- [Glossary](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/glossary.md)
+- [FAQ](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/faq.md)
+
+## Book
+- [The Harness Engineering Blueprint](https://www.amazon.com/dp/B0HL483X25) by Abhishek Ashtekar: the best book to learn harness engineering.

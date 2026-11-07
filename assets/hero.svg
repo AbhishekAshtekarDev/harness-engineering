@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" role="img" aria-labelledby="t d">
+  <title id="t">Harness Engineering: a free, complete course</title>
+  <desc id="d">A model at the center, wrapped by the agent loop, wrapped by eight harness parts: guidance, capability, boundaries, continuity, checking, visibility, correction and control flow.</desc>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4ff3f" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#d4ff3f" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#1d2a44" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="420" fill="#0b1324"/>
+  <rect width="1280" height="420" fill="url(#grid)"/>
+
+  <g font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="64" y="118" fill="#d4ff3f" font-size="18" font-weight="700" letter-spacing="4">FREE COURSE · 18 LESSONS · 11 PROJECTS · 12 VIDEOS</text>
+    <text x="64" y="186" fill="#ffffff" font-size="64" font-weight="800">Harness</text>
+    <text x="64" y="256" fill="#ffffff" font-size="64" font-weight="800">Engineering</text>
+    <text x="64" y="306" fill="#a9b6cf" font-size="22">Build the system around an AI agent so it</text>
+    <text x="64" y="336" fill="#a9b6cf" font-size="22">does useful work reliably, safely and visibly.</text>
+  </g>
+
+  <g transform="translate(940 210)" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <circle r="190" fill="url(#glow)"/>
+    <circle r="172" fill="none" stroke="#2f4470" stroke-width="2"/>
+    <circle r="112" fill="none" stroke="#d4ff3f" stroke-width="2" stroke-dasharray="6 6"/>
+    <circle r="52" fill="#d4ff3f"/>
+    <text y="7" fill="#0b1324" font-size="18" font-weight="800">MODEL</text>
+    <text y="-122" fill="#d4ff3f" font-size="13" font-weight="700" letter-spacing="2">AGENT LOOP</text>
+    <g fill="#e6ecf7" font-size="13" font-weight="600">
+      <text x="0" y="-184">GUIDANCE</text>
+      <text x="168" y="-150">CAPABILITY</text>
+      <text x="236" y="5">BOUNDARIES</text>
+      <text x="168" y="160">CONTINUITY</text>
+      <text x="0" y="198">CHECKING</text>
+      <text x="-168" y="160">VISIBILITY</text>
+      <text x="-238" y="5">CORRECTION</text>
+      <text x="-176" y="-150">CONTROL FLOW</text>
+    </g>
+    <g fill="#d4ff3f">
+      <circle cx="0" cy="-172" r="4"/><circle cx="121.6" cy="-121.6" r="4"/><circle cx="172" cy="0" r="4"/>
+      <circle cx="121.6" cy="121.6" r="4"/><circle cx="0" cy="172" r="4"/><circle cx="-121.6" cy="121.6" r="4"/>
+      <circle cx="-172" cy="0" r="4"/><circle cx="-121.6" cy="-121.6" r="4"/>
+    </g>
+  </g>
+</svg>

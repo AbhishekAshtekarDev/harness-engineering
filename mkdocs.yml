@@ -1,0 +1,96 @@
+site_name: Harness Engineering
+site_description: A free, complete course on harness engineering, the practice of designing the system around an AI agent so it does useful work reliably.
+site_url: https://abhishekashtekardev.github.io/harness-engineering/
+site_author: Abhishek Ashtekar
+repo_url: https://github.com/AbhishekAshtekarDev/harness-engineering
+repo_name: harness-engineering
+edit_uri: ""
+docs_dir: docs
+copyright: Code MIT · Content CC BY 4.0 · Abhishek Ashtekar
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: lime
+      toggle: {icon: material/weather-night, name: Dark mode}
+    - scheme: slate
+      primary: indigo
+      accent: lime
+      toggle: {icon: material/weather-sunny, name: Light mode}
+  features:
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Course:
+      - course/index.md
+      - 01 What harness engineering is: course/01-what-is-harness-engineering.md
+      - 02 How an AI agent works: course/02-how-an-agent-works.md
+      - 03 The layers, prompt to harness: course/03-the-layers.md
+      - 04 Instructions and AGENTS.md: course/04-instructions-and-agents-md.md
+      - 05 Context engineering: course/05-context-engineering.md
+      - 06 Tools, MCP and Agent Skills: course/06-tools-mcp-and-skills.md
+      - 07 Sandboxes, permissions, security: course/07-sandboxes-permissions-and-security.md
+      - 08 State, memory, long-running work: course/08-state-memory-and-long-running-work.md
+      - 09 Guardrails, tests and evals: course/09-guardrails-tests-and-evals.md
+      - 10 Observability: course/10-observability.md
+      - 11 Feedback and verification: course/11-feedback-verification-and-steering.md
+      - 12 Loop engineering: course/12-loop-engineering.md
+      - 13 Graphs and multi-agent systems: course/13-graphs-and-multi-agent-systems.md
+      - 14 Build a complete harness: course/14-build-a-complete-harness.md
+      - 15 Diagnosing agent failures: course/15-diagnosing-agent-failures.md
+      - 16 Production: course/16-harness-engineering-in-production.md
+      - 17 Beyond coding: course/17-harnesses-beyond-coding.md
+      - 18 Case studies: course/18-case-studies.md
+  - Videos: videos/index.md
+  - Projects:
+      - projects/index.md
+      - 01 Agent loop: projects/01-agent-loop/index.md
+      - 02 Tool design: projects/02-tool-design/index.md
+      - 03 Permissions and sandbox: projects/03-permissions-and-sandbox/index.md
+      - 04 Long-running state: projects/04-long-running-state/index.md
+      - 05 Loop controls: projects/05-loop-controls/index.md
+      - 06 Guides and sensors: projects/06-guides-and-sensors/index.md
+      - 07 Traces and diagnosis: projects/07-traces-and-diagnosis/index.md
+      - 08 Evals: projects/08-evals/index.md
+      - 09 Graph workflow: projects/09-graph-workflow/index.md
+      - 10 Capstone: projects/10-capstone-full-harness/index.md
+      - 11 Support agent harness: projects/11-support-agent-harness/index.md
+      - harnesslab: harnesslab/index.md
+      - Example app: examples/habit-tracker/index.md
+  - Reference:
+      - reference/index.md
+      - Harness checklist: reference/harness-checklist.md
+      - Failure diagnosis: reference/failure-diagnosis.md
+      - Glossary: reference/glossary.md
+      - Frameworks map: reference/frameworks-map.md
+      - Templates: reference/templates/index.md
+      - Reading list: reference/reading-list.md
+      - FAQ: reference/faq.md
+      - Agent skill: skills/index.md
+  - Contributing: CONTRIBUTING.md

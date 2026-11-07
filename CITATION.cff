@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this course, please cite it."
+type: software
+title: "Harness Engineering: The Free, Complete Course"
+abstract: "A free course on harness engineering: designing the system around an AI agent (context, tools, sandboxes, permissions, state, guardrails, evals, observability, feedback, loops, graphs and human control) so it completes useful work reliably. 18 lessons, 11 tested projects, 12 videos and the harnesslab teaching harness."
+authors:
+  - family-names: Ashtekar
+    given-names: Abhishek
+    website: "https://zerotoaimastery.com"
+repository-code: "https://github.com/AbhishekAshtekarDev/harness-engineering"
+url: "https://abhishekashtekardev.github.io/harness-engineering/"
+license: [MIT, CC-BY-4.0]
+date-released: 2026-11-08
+keywords:
+  - harness engineering
+  - agent harness
+  - AI agents
+  - context engineering
+  - loop engineering
+  - agent evals
+  - AGENTS.md
+  - MCP
+preferred-citation:
+  type: book
+  title: "The Harness Engineering Blueprint: The Complete Guide to AI Agents, Agent Loops, Graph Workflows, Guardrails, Evals, and Observability"
+  authors:
+    - family-names: Ashtekar
+      given-names: Abhishek
+  year: 2026
+  month: 9
+  url: "https://www.amazon.com/dp/B0HL483X25"

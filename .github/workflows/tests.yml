@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install pytest tzdata langgraph
+      - name: harnesslab
+        run: python -m pytest -q harnesslab/tests
+      - name: habit-tracker example
+        run: python -m pytest -q examples/habit-tracker
+      - name: project solutions
+        shell: bash
+        run: |
+          for d in projects/*/; do
+            if ls "$d"test_*.py >/dev/null 2>&1; then
+              (cd "$d" && SOLUTION=1 python -m pytest -q) || exit 1
+            fi
+          done
+      - name: prose style
+        run: python tools/style_check.py

@@ -1,0 +1,7 @@
+# Shared application settings. Changes here affect every feature and every
+# environment, so they go through a human review.
+[calendar]
+week_starts_on = "monday"
+
+[reminders]
+earliest_local_hour = 8

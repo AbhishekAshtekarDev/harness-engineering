@@ -1,0 +1,16 @@
+[
+  {
+    "id": "F001",
+    "category": "functional",
+    "description": "A user can set a weekly target between 1 and 7 for a habit",
+    "steps": ["Open a habit", "Set weekly target to 3", "Reload the page", "Target still shows 3"],
+    "passes": false
+  },
+  {
+    "id": "F002",
+    "category": "functional",
+    "description": "A user who misses the weekly target sees their streak reset at the start of the next week",
+    "steps": ["Create a habit with target 3", "Complete it twice in a week", "Advance the clock to Monday", "Streak shows 0"],
+    "passes": false
+  }
+]
