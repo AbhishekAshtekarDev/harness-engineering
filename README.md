@@ -330,8 +330,8 @@ The whole course is also a searchable website with dark mode, a sidebar for ever
 
 <table>
   <tr>
-    <td width="50%"><a href="https://abhishekashtekardev.github.io/harness-engineering/course/07-sandboxes-permissions-and-security/"><img src="assets/readme/site-lesson.jpg" alt="Lesson 7 on the course website"></a><p align="center"><sub>A lesson page, with the outline on the right</sub></p></td>
-    <td width="50%"><a href="https://abhishekashtekardev.github.io/harness-engineering/videos/"><img src="assets/readme/site-videos.jpg" alt="The videos page on the course website"></a><p align="center"><sub>The videos page</sub></p></td>
+    <td width="50%"><a href="https://abhishekashtekardev.github.io/harness-engineering/"><img src="assets/readme/site-home.jpg" alt="The course website home page"></a><p align="center"><sub>The home page</sub></p></td>
+    <td width="50%"><a href="https://abhishekashtekardev.github.io/harness-engineering/course/07-sandboxes-permissions-and-security/"><img src="assets/readme/site-lesson.jpg" alt="Lesson 7 on the course website"></a><p align="center"><sub>A lesson page, with every part in the sidebar</sub></p></td>
   </tr>
 </table>
 
