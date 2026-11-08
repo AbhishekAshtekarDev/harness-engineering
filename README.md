@@ -5,7 +5,7 @@
   </picture>
 </h1>
 
-<p align="center"><strong>The free, open-source course on harness engineering: how to build the system around an AI agent so it does real work reliably.</strong></p>
+<p align="center"><strong>The free, open-source course on harness engineering: how to build the system around an AI agent so you can trust the work it hands back.</strong></p>
 
 <p align="center">
   <a href="course/"><img src="https://img.shields.io/badge/lessons-18-0b1324?style=flat-square" alt="18 lessons"></a>
@@ -33,9 +33,9 @@
 
 ## Why this course exists
 
-Ask a coding agent to add a weekly streak to a habit-tracker app. It reads a few files, writes a tidy function, runs its tests and tells you the work is done. A week later you find three problems. Streaks reset on the wrong day for users in Tokyo, because the code used the server's UTC date. Two older tests now fail. And the agent edited a shared config file that had nothing to do with the task.
+Ask a coding agent to add a weekly streak to a habit-tracker app. It reads a few files, writes a tidy function, runs its tests and tells you the work is done. A week later you find three problems. Streaks reset on the wrong day for users in Tokyo, because the code used the server's UTC date. Two older tests now fail, and the agent also edited a shared config file that the task never mentioned.
 
-A stronger model would not have saved you. Nothing told the agent about the project's time-zone helper, nothing stopped it from touching the config, and nothing checked its work except the tests it wrote itself. Those are harness problems, and the teams that fixed them at the harness level reported large gains:
+Switching to a stronger model leaves all three problems in place. The agent did not know the project had a time-zone helper, it had write access to the config folder, and the only tests it ran were the ones it wrote. You fix those in the harness, and the teams that did so published these results:
 
 <table>
   <tr>
@@ -45,7 +45,7 @@ A stronger model would not have saved you. Nothing told the agent about the proj
   </tr>
 </table>
 
-This course teaches you to build that system one part at a time. Every idea comes with code you can run, tests that prove it works, and the primary source it came from.
+This course teaches you to build that system one part at a time, with code you can run, tests that show each part working, and a link to the primary source behind each claim.
 
 ## Contents
 
@@ -67,7 +67,7 @@ This course teaches you to build that system one part at a time. Every idea come
 
 ## What harness engineering is
 
-**Harness engineering is the practice of designing the system around an AI agent so the agent has the information, tools, environment, constraints, feedback and control mechanisms it needs to complete useful work reliably.** LangChain put it in four words: Agent = Model + Harness. The model does the reasoning. Everything else is harness.
+**Harness engineering is the practice of designing the system around an AI agent so the agent has the information, tools, environment, constraints, feedback and control mechanisms it needs to complete useful work reliably.** LangChain puts it as Agent = Model + Harness: the model does the reasoning, and the harness is everything around it, from the instructions it reads to the tests that judge its work.
 
 <p align="center">
   <picture>
@@ -97,7 +97,7 @@ This course teaches you to build that system one part at a time. Every idea come
 
 </details>
 
-The course organises the harness into eight parts. Each one exists because of a specific way agents fail, and each has its own lesson and project.
+The course splits the harness into eight parts. Each part answers one question and prevents one family of failures, and each has its own lesson and project.
 
 | Part | The question it answers | What goes wrong without it | Learn it in |
 |---|---|---|---|
@@ -112,7 +112,7 @@ The course organises the harness into eight parts. Each one exists because of a 
 
 ## How a harness handles one request
 
-The model never touches anything directly. It writes a structured request, and the harness decides whether to run it, runs it somewhere safe, records it and hands back the result. When the agent says it is finished, the harness checks the work before anyone else sees it.
+The model cannot open a file or run a command on its own. It writes a structured request, and the harness decides whether to allow it, runs it in a sandbox, records it and hands back the result. When the agent reports that it has finished, the harness runs its own checks before you see the work.
 
 <p align="center">
   <picture>
@@ -156,7 +156,7 @@ python -m harnesslab demo
   </picture>
 </p>
 
-The agent's own tests passed. The hidden acceptance test still found the bug, because the harness verified the work instead of trusting the agent's report. That idea runs through the whole course. Run `python -m harnesslab trace runs/HT-142.jsonl` afterwards to see the same run as a timing waterfall, step by step.
+The agent's own tests passed, and the hidden acceptance test still found the bug, because the harness ran checks the agent could not see or edit. You will build each of those checks in the course. Run `python -m harnesslab trace runs/HT-142.jsonl` afterwards to see the same run as a timing waterfall, step by step.
 
 ## The same agent, with and without a harness
 
@@ -213,7 +213,7 @@ Eighteen lessons in nine parts. Each part adds one layer to the same running exa
 
 ## Syllabus
 
-Every lesson opens with what you will learn and ends with questions to check yourself, an exercise and the sources worth reading next.
+Each lesson opens with what you will learn and closes with questions to check yourself, an exercise and the sources worth reading next.
 
 <table>
   <tr><th align="left">Lesson</th><th align="left">The question it answers</th><th align="left">What you take away</th><th align="left">Practice</th></tr>
@@ -222,7 +222,7 @@ Every lesson opens with what you will learn and ends with questions to check you
   <tr><td><a href="course/02-how-an-agent-works.md">2. How an AI Agent Works</a><br><sub>40 min</sub></td><td>What happens between your request and the agent's answer?</td><td>Tokens, context windows, tool calls and the loop, and why small errors compound over many steps</td><td><a href="projects/01-agent-loop/">Project 1</a><br><a href="https://abhishekashtekardev.github.io/harness-engineering/videos/#02-the-agent-loop">Video, 0:45</a></td></tr>
   <tr><td><a href="course/03-the-layers.md">3. From Prompt Engineering to Harness Engineering</a><br><sub>25 min</sub></td><td>How do prompt, context, loop, graph and harness engineering fit together?</td><td>One map of six layers that tells you where a failure lives</td><td><a href="https://abhishekashtekardev.github.io/harness-engineering/videos/#03-the-layers">Video, 0:35</a></td></tr>
   <tr><td colspan="4"><b>Part 2: Guidance</b></td></tr>
-  <tr><td><a href="course/04-instructions-and-agents-md.md">4. Instructions and AGENTS.md</a><br><sub>40 min</sub></td><td>What should an instruction file say, and what should it leave out?</td><td>Short files written from real failures, what the 2026 studies found, and which rules need enforcement instead of words</td><td><a href="reference/templates/AGENTS.md">AGENTS.md template</a></td></tr>
+  <tr><td><a href="course/04-instructions-and-agents-md.md">4. Instructions and AGENTS.md</a><br><sub>40 min</sub></td><td>What should an instruction file say, and what should it leave out?</td><td>Short files written from real failures, what the 2026 studies found, and which rules need code to enforce them</td><td><a href="reference/templates/AGENTS.md">AGENTS.md template</a></td></tr>
   <tr><td><a href="course/05-context-engineering.md">5. Context Engineering for Harnesses</a><br><sub>45 min</sub></td><td>What should the model see on each call?</td><td>How to select and shape context, why long contexts degrade, and when to compact, reset or hand work off</td><td><a href="https://abhishekashtekardev.github.io/harness-engineering/videos/#04-context-rot-compaction-and-resets">Video, 0:39</a></td></tr>
   <tr><td colspan="4"><b>Part 3: Capability</b></td></tr>
   <tr><td><a href="course/06-tools-mcp-and-skills.md">6. Tools, MCP and Agent Skills</a><br><sub>50 min</sub></td><td>How do you give an agent tools it uses well?</td><td>Few clear tools, shaped output, errors that explain the fix, MCP servers and skills</td><td><a href="projects/02-tool-design/">Project 2</a><br><a href="https://abhishekashtekardev.github.io/harness-engineering/videos/#05-tools-mcp-and-skills">Video, 0:39</a></td></tr>
@@ -248,7 +248,7 @@ Every lesson opens with what you will learn and ends with questions to check you
 
 ## Projects
 
-Eleven projects, each one a small piece of a real harness written in plain Python. Every project runs offline against a scripted model, has tests that describe the expected behaviour exactly, and ships with a reference solution. You can point any of them at Claude or an OpenAI-compatible model when you are ready.
+Eleven projects, each one a small piece of a real harness written in plain Python. Each project runs offline against a scripted model, comes with tests that spell out the expected behaviour, and has a reference solution. When you want to see a real model inside the same code, point it at Claude or any OpenAI-compatible server.
 
 | | Project | What you build | Harness part | Time |
 |---|---|---|---|---|
@@ -285,7 +285,7 @@ Twelve narrated explainers, each under a minute, one per core idea. [Watch them 
 
 ## harnesslab: a complete harness you can read
 
-[`harnesslab/`](harnesslab/) is the small Python harness the course runs on. It has no required dependencies and one module per harness part, so you can open any part and read exactly how it works. The habit-tracker harness from the capstone fits in [one file of about a hundred lines](harnesslab/harnesslab/presets.py). This is its permission policy and its definition of done:
+[`harnesslab/`](harnesslab/) is the small Python harness the course runs on. It has no required dependencies and one module per harness part, so you can open the permission code or the verifier and read the whole thing in a few minutes. The habit-tracker harness from the capstone fits in [one file of about a hundred lines](harnesslab/harnesslab/presets.py). This is its permission policy and its definition of done:
 
 ```python
 # Permissions: deny first, then ask, then allow.
@@ -347,9 +347,9 @@ The whole course is also a searchable website with dark mode, a sidebar for ever
 
 This course is for engineers who already use coding agents and want them to finish work they can trust, for people building agents of any kind who want to understand the system around the model, and for leads who need to judge how much an agent setup can be trusted.
 
-It is not a prompt-writing course, and it does not teach one framework's API. The ideas apply to Claude Code, Codex, Cursor, LangGraph, the OpenAI Agents SDK, the Claude Agent SDK or your own code, because every harness has to answer the same eight questions.
+It is not a prompt-writing course, and it does not teach one framework's API. The ideas apply to Claude Code, Codex, Cursor, LangGraph, the OpenAI Agents SDK, the Claude Agent SDK or your own code, because any harness has to answer the same eight questions.
 
-You need Python 3.10 or newer and basic comfort with a terminal. That is enough for every lesson, the demo and all eleven projects. An Anthropic or OpenAI-compatible API key is optional, and `OPENAI_BASE_URL` lets you use a local model server instead.
+You need Python 3.10 or newer and basic comfort with a terminal. That covers all 18 lessons, the demo and the eleven projects. An Anthropic or OpenAI-compatible API key is optional, and `OPENAI_BASE_URL` lets you use a local model server instead.
 
 ## Reference shelf
 
@@ -374,7 +374,7 @@ You need Python 3.10 or newer and basic comfort with a terminal. That is enough 
 | Covers coding agents only | Adds support, research, data and operations agents |
 | Needs an agent or an API key to try anything | Runs offline, so you see exact harness behaviour before spending a token |
 
-The facts are current as of November 2026, including the stateless MCP specification from July, the research on whether AGENTS.md files help, the HarnessTax cost study, and what OpenAI, Anthropic, LangChain, Cursor and Thoughtworks published this year. Every claim in a lesson links to its primary source.
+The facts are current as of November 2026, including the stateless MCP specification from July, the research on whether AGENTS.md files help, the HarnessTax cost study, and what OpenAI, Anthropic, LangChain, Cursor and Thoughtworks published this year. Each lesson links its claims to the primary sources.
 
 ## What is in this repository
 
@@ -398,7 +398,7 @@ harness-engineering/
 
 [**The Harness Engineering Blueprint**](https://www.amazon.com/dp/B0HL483X25) by Abhishek Ashtekar is the best book to learn harness engineering. This course gives you code and exercises. The book gives you the complete reasoning in one connected path.
 
-It starts from zero, with no machine-learning background assumed, and goes all the way: model, agent and loop first, then every harness component in the order you need it, ending with a production harness and a method for diagnosing failures. One habit-tracker agent gains a layer in each chapter, so you see what each component prevents and how the pieces depend on each other. Guardrails, evals and observability, the parts teams most often skip, get full chapters alongside loops, graph workflows, multi-agent systems and human control. It teaches the questions every harness has to answer rather than one framework's API, so it stays useful as the tools change.
+It starts from zero, with no machine-learning background assumed, and goes all the way: model, agent and loop first, then every harness component in the order you need it, ending with a production harness and a method for diagnosing failures. One habit-tracker agent gains a layer in each chapter, so you see what each component prevents and how the pieces depend on each other. Guardrails, evals and observability, the parts teams most often skip, get full chapters alongside loops, graph workflows, multi-agent systems and human control. It teaches the questions any harness has to answer, so it stays useful when frameworks change.
 
 Available on Amazon in [Kindle](https://www.amazon.com/dp/B0HL483X25), [paperback](https://www.amazon.com/dp/B0HL52KQ89) and [hardcover](https://www.amazon.com/dp/B0HL5XTKXL), with free companion resources at [TheHarnessEngineeringBlueprint.com/resources](https://TheHarnessEngineeringBlueprint.com/resources).
 
@@ -413,13 +413,13 @@ No. Prompt engineering is how you tell the model what you want. Context engineer
 <details>
 <summary><b>Do I need an API key?</b></summary>
 
-No. Every exercise, project and the demo run offline with a scripted model. A key lets you run the same harness on Claude or any OpenAI-compatible model.
+No. The exercises, projects and demo all run offline with a scripted model. A key lets you run the same harness on Claude or any OpenAI-compatible model.
 </details>
 
 <details>
 <summary><b>I only use Claude Code or Cursor. Is this for me?</b></summary>
 
-Yes. Claude Code, Codex and Cursor each ship a built-in harness, and your AGENTS.md, permission rules, hooks, skills and tests form an outer harness around it. Lessons 4, 7, 11 and 15 apply directly, and the [templates](reference/templates/) drop straight into your project.
+Yes. Claude Code, Codex and Cursor each ship a built-in harness, and your AGENTS.md, permission rules, hooks, skills and tests form an outer harness around it. Lessons 4, 7, 11 and 15 apply to your setup today, and you can copy the [templates](reference/templates/) into your project.
 </details>
 
 <details>
@@ -454,7 +454,7 @@ The [reading list](reference/reading-list.md) has the rest, dated and grouped by
 
 ## Contributing
 
-Corrections and improvements are welcome, especially newer primary sources, clearer explanations and translations. Read [CONTRIBUTING.md](CONTRIBUTING.md) first. Every factual claim in a lesson links to its primary source, so please keep it that way.
+Corrections and improvements are welcome, above all newer primary sources, clearer explanations and translations. Read [CONTRIBUTING.md](CONTRIBUTING.md) first, and link each factual claim you add to its primary source.
 
 ## License and citation
 

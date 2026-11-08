@@ -4,6 +4,13 @@ Eighteen lessons in nine parts, from how an agent works to running a harness in 
 
 Reading takes about 14 hours. With all eleven projects, plan on 30 to 40 hours.
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/readme/learning-path-dark.svg">
+    <img src="../assets/readme/learning-path-light.svg" alt="Learning path: nine parts from foundations to production, each with its lessons and projects" width="100%">
+  </picture>
+</p>
+
 ## Part 1: Foundations
 
 1. [What Harness Engineering Is](01-what-is-harness-engineering.md) · 35 min · try the offline `harnesslab` demo

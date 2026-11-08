@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+  <section class="hx-hero">
+    <div class="hx-hero__inner md-grid">
+      <div class="hx-hero__text">
+        <p class="hx-eyebrow">Free course · Open source · 2026 edition</p>
+        <h1>Harness Engineering</h1>
+        <p class="hx-hero__lead">Build the system around an AI agent so you can trust the work it hands back. Eighteen lessons, eleven tested projects, twelve short videos and a harness you can run offline in one command.</p>
+        <div class="hx-hero__actions">
+          <a href="{{ 'course/01-what-is-harness-engineering/' | url }}" class="md-button md-button--primary">Start lesson 1</a>
+          <a href="#see-it-work-in-one-minute" class="md-button">Run the demo</a>
+          <a href="{{ config.repo_url }}" class="md-button">View on GitHub</a>
+        </div>
+        <ul class="hx-stats">
+          <li><strong>18</strong><span>lessons</span></li>
+          <li><strong>11</strong><span>tested projects</span></li>
+          <li><strong>12</strong><span>videos</span></li>
+          <li><strong>0</strong><span>API keys needed</span></li>
+        </ul>
+      </div>
+      <div class="hx-hero__art" aria-hidden="true">
+        <img src="{{ 'assets/readme/ring-dark.svg' | url }}" alt="">
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block content %}
+  <div class="hx-home">{{ page.content }}</div>
+{% endblock %}

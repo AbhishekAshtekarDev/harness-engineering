@@ -12,6 +12,11 @@ theme:
   name: material
   custom_dir: overrides
   language: en
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
     - scheme: default
       primary: indigo
@@ -22,14 +27,22 @@ theme:
       accent: lime
       toggle: {icon: material/weather-sunny, name: Light mode}
   features:
+    - navigation.tabs
+    - navigation.path
+    - navigation.instant
+    - navigation.instant.progress
     - navigation.indexes
     - navigation.sections
     - navigation.expand
     - navigation.top
     - navigation.footer
     - search.highlight
+    - search.suggest
     - content.code.copy
     - toc.follow
+
+extra_css:
+  - assets/stylesheets/harness.css
 
 extra:
   verification:
@@ -47,6 +60,9 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.tasklist:

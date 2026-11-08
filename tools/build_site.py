@@ -27,6 +27,64 @@ PAGES = ["README.md", "course/*.md", "reference/*.md", "reference/templates/READ
 LINK = re.compile(r"(\]\()([^)\s]+)(\))|(src=\")([^\"]+)(\")|(href=\")([^\"]+)(\")")
 
 
+PICTURE = re.compile(r'(?:<p align="center">\s*)?<picture>\s*<source media="\(prefers-color-scheme: dark\)" srcset="([^"]+)">\s*'
+                     r'<img src="([^"]+)" alt="([^"]*)"[^>]*>\s*</picture>(?:\s*</p>)?', re.S)
+
+
+START_HERE = """
+## Start here
+
+<div class="grid cards" markdown>
+
+-   :material-book-open-page-variant:{ .lg } **[The course](course/README.md)**
+
+    ---
+
+    Eighteen lessons in nine parts, from how an agent works to running a harness in production.
+
+-   :material-flask-outline:{ .lg } **[The projects](projects/README.md)**
+
+    ---
+
+    Eleven tested Python projects. Each one builds a single harness part, and all of them run offline.
+
+-   :material-play-circle-outline:{ .lg } **[The videos](videos/README.md)**
+
+    ---
+
+    Twelve narrated explainers, each under a minute, one for each core idea.
+
+-   :material-bookshelf:{ .lg } **[The reference shelf](reference/README.md)**
+
+    ---
+
+    The harness checklist, a failure diagnosis table, templates, a glossary and the reading list.
+
+</div>
+"""
+
+
+def for_site(rel: Path, text: str) -> str:
+    """Adapt GitHub-flavoured pages to the website before links are rewritten."""
+    # <picture> follows the OS theme; the site has its own light/dark toggle, so use Material's image fragments.
+    text = PICTURE.sub(lambda m: f"\n![{m.group(3)}]({m.group(2)}#only-light){{ .hx-figure }}\n"
+                                 f"![{m.group(3)}]({m.group(1)}#only-dark){{ .hx-figure }}\n", text)
+    if rel == Path("README.md"):
+        # The home template draws its own hero, so drop the GitHub header and the self-referencing section.
+        text = text.split("\n---\n", 1)[1]
+        text = re.sub(r"\n## Read it as a website\n.*?(?=\n## )", "\n", text, flags=re.S)
+        text = re.sub(r"\n## Contents\n.*?(?=\n## )", "\n" + START_HERE, text, count=1, flags=re.S)
+    meta = re.compile(r"^((?:Lesson|Project) \d+ of \d+ · .+)$", re.M)
+    def chips(m: re.Match) -> str:
+        parts = m.group(1).split(" · ")
+        return '<div class="hx-meta" markdown="1">\n\n' + " ".join(
+            f'<span class="hx-chip" markdown="1">{p}</span>' for p in parts) + "\n\n</div>"
+    text = meta.sub(chips, text, count=1)
+    text = re.sub(r"^(In this lesson you will learn .+)$", lambda m: f'<div class="hx-lead" markdown="1">\n\n{m.group(1)}\n\n</div>',
+                  text, count=1, flags=re.M)
+    return text
+
+
 def page_path(src: Path) -> Path:
     rel = src.relative_to(ROOT)
     if rel == Path("README.md"):
@@ -46,7 +104,7 @@ def main() -> None:
     targets[(ROOT / "videos" / "README.md").resolve()] = DOCS / "videos" / "index.md"  # generated below
     for src, dst in pages.items():
         dst.parent.mkdir(parents=True, exist_ok=True)
-        text = src.read_text(encoding="utf-8")
+        text = for_site(src.relative_to(ROOT), src.read_text(encoding="utf-8"))
 
         def fix(m: re.Match) -> str:
             pre, target, post = [g for g in m.groups() if g is not None]
@@ -96,6 +154,9 @@ def main() -> None:
                 f'style="width:100%;border-radius:12px" src="{v["slug"]}.mp4"></video>', "",
                 f"{idea}", ""]
     (vids / "index.md").write_text(seo.decorate(Path("videos/index.md"), "\n".join(out), lessons, ROOT, VIDEOS), encoding="utf-8")
+    home = DOCS / "index.md"
+    h = home.read_text(encoding="utf-8")
+    home.write_text(h.replace("---\n", "---\ntemplate: home.html\nhide:\n  - navigation\n  - toc\n", 1), encoding="utf-8")
     shutil.copy(ROOT / "llms.txt", DOCS / "llms.txt")
     (DOCS / "llms-full.txt").write_text(seo.llms_full(ROOT), encoding="utf-8")
     for extra in (ROOT / "tools" / "site-root").glob("*"):

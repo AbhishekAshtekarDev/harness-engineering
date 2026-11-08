@@ -332,12 +332,34 @@ def demo(t: dict) -> str:
                "hidden acceptance tests catch them, and the run ends only when verification passes.")
 
 
+def ring_only(t: dict) -> str:
+    """The banner's ring on a transparent background, for the website hero."""
+    body = ring(320, 250, t)
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500" width="640" height="500" role="img" '
+            'aria-label="The model inside the agent loop, inside eight harness parts">'
+            f'<g font-family="{FONT}">{body}</g></svg>')
+
+
+def logo(_: dict) -> str:
+    return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">'
+            '<rect width="64" height="64" rx="14" fill="#0b1324"/>'
+            '<circle cx="32" cy="32" r="21" fill="none" stroke="#3b5285" stroke-width="3"/>'
+            '<circle cx="32" cy="32" r="13.5" fill="none" stroke="#d4ff3f" stroke-width="2.5" stroke-dasharray="3.5 3"/>'
+            '<circle cx="32" cy="32" r="6.5" fill="#d4ff3f"/>'
+            + "".join(f'<circle cx="{32 + 21 * dx:.1f}" cy="{32 + 21 * dy:.1f}" r="2.6" fill="#d4ff3f"/>'
+                      for dx, dy in [(0, -1), (0.707, -0.707), (1, 0), (0.707, 0.707), (0, 1), (-0.707, 0.707),
+                                     (-1, 0), (-0.707, -0.707)]) + '</svg>')
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for name, fn in [("banner", banner), ("harness-map", harness_map), ("request-path", request_path),
                      ("without-with", without_with), ("learning-path", learning_path), ("demo", demo)]:
         for theme, t in THEMES.items():
             (OUT / f"{name}-{theme}.svg").write_text(fn(t), encoding="utf-8")
+    for theme, t in THEMES.items():
+        (OUT / f"ring-{theme}.svg").write_text(ring_only(t), encoding="utf-8")
+    (OUT.parent / "logo.svg").write_text(logo({}), encoding="utf-8")
     print("wrote", len(list(OUT.glob("*.svg"))), "files to", OUT)
 
 
