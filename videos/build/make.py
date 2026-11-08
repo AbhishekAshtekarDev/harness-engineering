@@ -417,12 +417,12 @@ def main(ids: list[str]) -> None:
         for f in (PROMO / "sfx").iterdir():
             shutil.copy(f, assets / "sfx" / f.name)
         if (proj / "timeline.json").exists() and (assets / "vo" / "voice.wav").exists() and not os.environ.get("REVOICE"):
-            tl = json.loads((proj / "timeline.json").read_text())
+            tl = json.loads((proj / "timeline.json").read_text(encoding="utf-8"))
         else:
             tl = make_voice(v, assets)
-        (proj / "timeline.json").write_text(json.dumps(tl, indent=1))
-        (proj / "index.html").write_text(Builder(v, tl).page())
-        (proj / "hyperframes.json").write_text(json.dumps({"paths": {"assets": "assets"}}, indent=2))
+        (proj / "timeline.json").write_text(json.dumps(tl, indent=1), encoding="utf-8")
+        (proj / "index.html").write_text(Builder(v, tl).page(), encoding="utf-8")
+        (proj / "hyperframes.json").write_text(json.dumps({"paths": {"assets": "assets"}}, indent=2), encoding="utf-8")
         print(f"{v['slug']}: {tl['total']:.1f}s")
 
 

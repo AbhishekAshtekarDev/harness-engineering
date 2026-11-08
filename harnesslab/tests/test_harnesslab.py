@@ -31,7 +31,7 @@ def test_path_guard_blocks_traversal_symlinks_and_protected(tmp_path):
     (tmp_path / "src").mkdir()
     (tmp_path / "config").mkdir()
     outside = tmp_path.parent / "outside-secret.txt"
-    outside.write_text("secret")
+    outside.write_text("secret", encoding="utf-8")
     (tmp_path / "src" / "link.txt").symlink_to(outside)
     guard = PathGuard(tmp_path, writable=("src/*",), protected=("src/keep.py",))
     assert guard.check_write("src/new.py") == (tmp_path / "src" / "new.py").resolve()
@@ -151,7 +151,7 @@ def test_trace_spans_nest_and_render(tmp_path):
             pass
     assert tracer.spans[1].parent_id == tracer.spans[0].span_id
     assert "read_file" in waterfall(tracer.spans)
-    assert len((tmp_path / "t.jsonl").read_text().splitlines()) == 2
+    assert len((tmp_path / "t.jsonl").read_text(encoding="utf-8").splitlines()) == 2
 
 
 def test_demo_run_succeeds():

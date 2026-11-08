@@ -27,12 +27,12 @@ PROGRESS = "progress.md"
 
 
 def _features(project: Path) -> list[dict]:
-    return json.loads((project / STATE / FEATURES).read_text())
+    return json.loads((project / STATE / FEATURES).read_text(encoding="utf-8"))
 
 
 def _save_features(project: Path, items: list[dict]) -> None:
     tmp = project / STATE / (FEATURES + ".tmp")
-    tmp.write_text(json.dumps(items, indent=2))
+    tmp.write_text(json.dumps(items, indent=2), encoding="utf-8")
     tmp.replace(project / STATE / FEATURES)  # atomic: a crash never leaves half a file
 
 
@@ -43,7 +43,7 @@ def checkpoint(project: Path, message: str) -> int:
     n = len([p for p in cps.iterdir() if p.is_dir()]) + 1
     dest = cps / f"{n:03d}"
     shutil.copytree(project, dest, ignore=shutil.ignore_patterns(STATE, "__pycache__"))
-    with (project / STATE / "checkpoints.log").open("a") as f:
+    with (project / STATE / "checkpoints.log").open("a", encoding="utf-8") as f:
         f.write(f"{n:03d} {message}\n")
     return n
 

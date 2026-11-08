@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 def load(path: str | Path) -> list[dict]:
-    spans = [json.loads(l) for l in Path(path).read_text().splitlines() if l.strip()]
+    spans = [json.loads(l) for l in Path(path).read_text(encoding="utf-8").splitlines() if l.strip()]
     return sorted(spans, key=lambda s: s["start"])
 
 

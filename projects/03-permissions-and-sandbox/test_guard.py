@@ -33,7 +33,7 @@ def test_rules_are_tripwires_not_walls():
 def test_path_guard(tmp_path):
     (tmp_path / "src").mkdir()
     outside = tmp_path.parent / f"{tmp_path.name}-outside.txt"
-    outside.write_text("x")
+    outside.write_text("x", encoding="utf-8")
     (tmp_path / "src" / "evil").symlink_to(outside)
     w, p = ("src/*", "tests/*"), ("tests/test_existing.py",)
     assert check_write(tmp_path, "src/new.py", w, p).name == "new.py"

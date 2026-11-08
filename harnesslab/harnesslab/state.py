@@ -35,14 +35,14 @@ class TaskState:
         path.parent.mkdir(parents=True, exist_ok=True)
         self.updated_at = time.time()
         tmp = path.with_suffix(".tmp")
-        tmp.write_text(json.dumps(asdict(self), indent=2))
+        tmp.write_text(json.dumps(asdict(self), indent=2), encoding="utf-8")
         tmp.replace(path)  # atomic on the same filesystem: no half-written state after a crash
         return path
 
     @classmethod
     def load(cls, folder: str | Path, task_id: str) -> "TaskState":
         path = Path(folder) / f"{task_id}.json"
-        return cls(**json.loads(path.read_text())) if path.exists() else cls(task_id)
+        return cls(**json.loads(path.read_text(encoding="utf-8"))) if path.exists() else cls(task_id)
 
 
 class ProgressLog:
@@ -53,11 +53,11 @@ class ProgressLog:
         entry = f"\n## {session} ({time.strftime('%Y-%m-%d %H:%M')})\n- Done: {done}\n- Next: {next_step}\n"
         if notes:
             entry += f"- Notes: {notes}\n"
-        with self.path.open("a") as f:
+        with self.path.open("a", encoding="utf-8") as f:
             f.write(entry)
 
     def read(self) -> str:
-        return self.path.read_text() if self.path.exists() else "(no progress recorded yet)"
+        return self.path.read_text(encoding="utf-8") if self.path.exists() else "(no progress recorded yet)"
 
 
 class FeatureListError(ValueError):
@@ -72,10 +72,10 @@ class FeatureList:
         if self.path.exists():
             raise FeatureListError("feature list already exists; the initializer runs once")
         items = [{"id": f"F{i + 1:03d}", "description": d, "passes": False} for i, d in enumerate(descriptions)]
-        self.path.write_text(json.dumps(items, indent=2))
+        self.path.write_text(json.dumps(items, indent=2), encoding="utf-8")
 
     def items(self) -> list[dict]:
-        return json.loads(self.path.read_text())
+        return json.loads(self.path.read_text(encoding="utf-8"))
 
     def next_unfinished(self) -> dict | None:
         return next((f for f in self.items() if not f["passes"]), None)
@@ -88,7 +88,7 @@ class FeatureList:
         for f in items:
             if f["id"] == feature_id:
                 f["passes"] = passes
-                self.path.write_text(json.dumps(items, indent=2))
+                self.path.write_text(json.dumps(items, indent=2), encoding="utf-8")
                 return
         raise FeatureListError(f"unknown feature {feature_id}")
 

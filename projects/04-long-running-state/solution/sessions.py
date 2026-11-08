@@ -27,12 +27,12 @@ PROGRESS = "progress.md"
 
 
 def _features(project: Path) -> list[dict]:
-    return json.loads((project / STATE / FEATURES).read_text())
+    return json.loads((project / STATE / FEATURES).read_text(encoding="utf-8"))
 
 
 def _save_features(project: Path, items: list[dict]) -> None:
     tmp = project / STATE / (FEATURES + ".tmp")
-    tmp.write_text(json.dumps(items, indent=2))
+    tmp.write_text(json.dumps(items, indent=2), encoding="utf-8")
     tmp.replace(project / STATE / FEATURES)  # atomic: a crash never leaves half a file
 
 
@@ -43,7 +43,7 @@ def checkpoint(project: Path, message: str) -> int:
     n = len([p for p in cps.iterdir() if p.is_dir()]) + 1
     dest = cps / f"{n:03d}"
     shutil.copytree(project, dest, ignore=shutil.ignore_patterns(STATE, "__pycache__"))
-    with (project / STATE / "checkpoints.log").open("a") as f:
+    with (project / STATE / "checkpoints.log").open("a", encoding="utf-8") as f:
         f.write(f"{n:03d} {message}\n")
     return n
 
@@ -68,7 +68,7 @@ def initialize(project: Path, features: list[str]) -> None:
     (project / STATE).mkdir(parents=True, exist_ok=True)
     _save_features(project, [{"id": f"F{i + 1:03d}", "description": d, "passes": False}
                              for i, d in enumerate(features)])
-    (project / STATE / PROGRESS).write_text("# Progress log\n\nOne entry per session, newest last.\n")
+    (project / STATE / PROGRESS).write_text("# Progress log\n\nOne entry per session, newest last.\n", encoding="utf-8")
     checkpoint(project, "initial state")
     # END SOLUTION
 
@@ -108,8 +108,8 @@ def start_session(project: Path, smoke_check: Callable[[], bool],
     items = _features(project)
     done = sum(f["passes"] for f in items)
     nxt = next((f for f in items if not f["passes"]), None)
-    progress = (project / STATE / PROGRESS).read_text().strip().splitlines()
-    log = (project / STATE / "checkpoints.log").read_text().strip().splitlines()
+    progress = (project / STATE / PROGRESS).read_text(encoding="utf-8").strip().splitlines()
+    log = (project / STATE / "checkpoints.log").read_text(encoding="utf-8").strip().splitlines()
     warnings = []
     ok = smoke_check()
     if not ok:
@@ -135,7 +135,7 @@ def complete_feature(project: Path, feature_id: str, verify: Callable[[str], boo
     if item is None:
         raise KeyError(f"unknown feature {feature_id}")
     stamp = time.strftime("%Y-%m-%d %H:%M")
-    with (project / STATE / PROGRESS).open("a") as log:
+    with (project / STATE / PROGRESS).open("a", encoding="utf-8") as log:
         if not verify(feature_id):
             log.write(f"\n- {stamp} {feature_id} attempted, check still FAILING. {note}\n")
             return False

@@ -75,11 +75,12 @@ def run_command(command: str, cwd: Path, timeout: float = 120, max_chars: int = 
     env = {k: os.environ[k] for k in SAFE_ENV_KEYS if k in os.environ}
     env["HOME"] = str(cwd)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["PYTHONUTF8"] = "1"  # child Python processes print UTF-8 on every OS
     # Make `python` mean the interpreter running the harness.
     env["PATH"] = str(Path(sys.executable).parent) + os.pathsep + env.get("PATH", "")
     start = time.monotonic()
     try:
-        proc = subprocess.run(command, shell=True, cwd=cwd, env=env, capture_output=True,
+        proc = subprocess.run(command, shell=True, cwd=cwd, env=env, capture_output=True, encoding="utf-8", errors="replace",
                               text=True, timeout=timeout)
         output = proc.stdout + proc.stderr
         code, timed_out = proc.returncode, False

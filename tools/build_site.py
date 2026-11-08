@@ -43,7 +43,7 @@ def main() -> None:
     targets[(ROOT / "videos" / "README.md").resolve()] = DOCS / "videos" / "index.md"  # generated below
     for src, dst in pages.items():
         dst.parent.mkdir(parents=True, exist_ok=True)
-        text = src.read_text()
+        text = src.read_text(encoding="utf-8")
 
         def fix(m: re.Match) -> str:
             pre, target, post = [g for g in m.groups() if g is not None]
@@ -72,7 +72,7 @@ def main() -> None:
             kind = "tree" if resolved.is_dir() else "blob"
             return pre + f"{GH}/{kind}/main/{rel}{frag}" + post
 
-        dst.write_text(LINK.sub(fix, text))
+        dst.write_text(LINK.sub(fix, text), encoding="utf-8")
 
     shutil.copytree(ROOT / "assets", DOCS / "assets")
     vids = DOCS / "videos"
@@ -92,7 +92,7 @@ def main() -> None:
                 f'<video controls preload="none" playsinline poster="posters/{v["id"]}.jpg" '
                 f'style="width:100%;border-radius:12px" src="{v["slug"]}.mp4"></video>', "",
                 f"**The idea:** {idea}", ""]
-    (vids / "index.md").write_text("\n".join(out))
+    (vids / "index.md").write_text("\n".join(out), encoding="utf-8")
     print(f"docs/ assembled: {len(pages)} pages")
 
 

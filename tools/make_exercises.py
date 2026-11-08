@@ -41,7 +41,7 @@ def main() -> None:
                 continue
             dst.parent.mkdir(parents=True, exist_ok=True)
             if src.suffix == ".py":
-                dst.write_text(strip(src.read_text()))
+                dst.write_text(strip(src.read_text(encoding="utf-8")))
             else:
                 shutil.copy(src, dst)
         print(f"wrote {exercise.relative_to(ROOT)}")

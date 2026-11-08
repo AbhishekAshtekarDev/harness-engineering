@@ -88,7 +88,7 @@ def coding_tools(ws: Workspace, guard: PathGuard, test_command: str = "python -m
         hits = []
         for p in sorted(base.rglob("*")):
             if p.is_file() and p.suffix in {".py", ".md", ".toml", ".txt", ".json"} and "__pycache__" not in p.parts:
-                for n, line in enumerate(p.read_text(errors="replace").splitlines(), 1):
+                for n, line in enumerate(p.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
                     if query.lower() in line.lower():
                         hits.append(f"{p.relative_to(root).as_posix()}:{n}: {line.strip()[:160]}")
         if not hits:
@@ -102,7 +102,7 @@ def coding_tools(ws: Workspace, guard: PathGuard, test_command: str = "python -m
             near = sorted(p.name for p in target.parent.glob("*")) if target.parent.is_dir() else []
             hint = f" Files in that folder: {', '.join(near)}." if near else ""
             raise ToolError(f"No file at '{path}'.{hint}")
-        lines = target.read_text(errors="replace").splitlines()
+        lines = target.read_text(encoding="utf-8", errors="replace").splitlines()
         chunk = lines[start_line - 1:end_line]
         numbered = "\n".join(f"{i:>4} {l}" for i, l in enumerate(chunk, start_line))
         more = f"\n[{len(lines) - end_line} more lines; read with start_line={end_line + 1}]" if len(lines) > end_line else ""
@@ -112,13 +112,13 @@ def coding_tools(ws: Workspace, guard: PathGuard, test_command: str = "python -m
         target = guard.check_write(path)
         if not target.is_file():
             raise ToolError(f"No file at '{path}'. To create a new file use write_file.")
-        text = target.read_text()
+        text = target.read_text(encoding="utf-8")
         count = text.count(old_text)
         if count == 0:
             raise ToolError("old_text was not found. Read the file again and copy the exact lines, including indentation.")
         if count > 1:
             raise ToolError(f"old_text appears {count} times. Include more surrounding lines so it is unique.")
-        target.write_text(text.replace(old_text, new_text, 1))
+        target.write_text(text.replace(old_text, new_text, 1), encoding="utf-8")
         return f"Edited {path}: replaced {old_text.count(chr(10)) + 1} line(s) with {new_text.count(chr(10)) + 1}."
 
     def write_file(path: str, content: str) -> str:
@@ -126,7 +126,7 @@ def coding_tools(ws: Workspace, guard: PathGuard, test_command: str = "python -m
         if target.exists():
             raise ToolError(f"'{path}' already exists. Use edit_file to change it.")
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(content)
+        target.write_text(content, encoding="utf-8")
         return f"Created {path} ({content.count(chr(10)) + 1} lines)."
 
     def run_tests(path: str = "") -> str:

@@ -54,7 +54,7 @@ def main() -> int:
              if "node_modules" not in f.parts and "site" not in f.parts]
     problems = 0
     for f in sorted(files):
-        for n, line in prose_lines(f.read_text()):
+        for n, line in prose_lines(f.read_text(encoding="utf-8")):
             for name, rx in CHECKS:
                 for m in rx.finditer(line):
                     problems += 1

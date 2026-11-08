@@ -41,7 +41,7 @@ def date_lint(ws: Workspace):
         if not path.startswith("habit_tracker/") or not path.endswith(".py") or path.endswith("timeutils.py"):
             return None
         problems = []
-        for n, line in enumerate((ws.root / path).read_text().splitlines(), 1):
+        for n, line in enumerate((ws.root / path).read_text(encoding="utf-8").splitlines(), 1):
             if re.search(r"\.date\(\)", line) and not line.lstrip().startswith("#"):
                 problems.append(
                     f"[lint] {path}:{n} calls .date() on a datetime. That is the UTC day, which is wrong for "
@@ -98,5 +98,5 @@ def build_habit_tracker_harness(model: Model, project: Path = HABIT_TRACKER, app
 
 
 def ticket(project: Path = HABIT_TRACKER) -> str:
-    return (project / "TICKET-HT-142.md").read_text() + \
+    return (project / "TICKET-HT-142.md").read_text(encoding="utf-8") + \
         "\nRead AGENTS.md first. Implement the ticket with unit tests."

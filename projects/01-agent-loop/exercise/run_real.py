@@ -37,11 +37,11 @@ def main() -> None:
     s = {"type": "string"}
 
     def write_file(path: str, content: str) -> str:
-        (work / path).write_text(content)
+        (work / path).write_text(content, encoding="utf-8")
         return f"wrote {path}"
 
     def read_file(path: str) -> str:
-        return (work / path).read_text()
+        return (work / path).read_text(encoding="utf-8")
 
     def run_python(path: str) -> str:
         r = subprocess.run([sys.executable, path], cwd=work, capture_output=True, text=True, timeout=20)
