@@ -32,7 +32,8 @@ theme:
     - toc.follow
 
 extra:
-  verification: {}
+  verification:
+    google-site-verification: wZF2D-3JJodV2cXVPbXCLDFM_rN98TRXMTdulYKtzHE
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/AbhishekAshtekarDev/harness-engineering
