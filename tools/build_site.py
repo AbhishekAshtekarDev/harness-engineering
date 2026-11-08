@@ -18,6 +18,8 @@ DOCS = ROOT / "docs"
 GH = "https://github.com/AbhishekAshtekarDev/harness-engineering"
 sys.path.insert(0, str(ROOT / "videos" / "build"))
 from specs import VIDEOS  # noqa: E402
+sys.path.insert(0, str(ROOT / "tools"))
+import seo  # noqa: E402
 
 PAGES = ["README.md", "course/*.md", "reference/*.md", "reference/templates/README.md", "projects/README.md",
          "projects/*/README.md", "harnesslab/README.md", "examples/habit-tracker/README.md", "CONTRIBUTING.md",
@@ -40,6 +42,7 @@ def main() -> None:
     sources = sorted({p for pat in PAGES for p in ROOT.glob(pat)})
     pages = {s.resolve(): page_path(s) for s in sources}
     targets = dict(pages)
+    lessons = seo.lesson_index(ROOT)
     targets[(ROOT / "videos" / "README.md").resolve()] = DOCS / "videos" / "index.md"  # generated below
     for src, dst in pages.items():
         dst.parent.mkdir(parents=True, exist_ok=True)
@@ -72,7 +75,7 @@ def main() -> None:
             kind = "tree" if resolved.is_dir() else "blob"
             return pre + f"{GH}/{kind}/main/{rel}{frag}" + post
 
-        dst.write_text(LINK.sub(fix, text), encoding="utf-8")
+        dst.write_text(seo.decorate(dst.relative_to(DOCS), LINK.sub(fix, text), lessons, ROOT), encoding="utf-8")
 
     shutil.copytree(ROOT / "assets", DOCS / "assets")
     vids = DOCS / "videos"
@@ -92,7 +95,11 @@ def main() -> None:
                 f'<video controls preload="none" playsinline poster="posters/{v["id"]}.jpg" '
                 f'style="width:100%;border-radius:12px" src="{v["slug"]}.mp4"></video>', "",
                 f"{idea}", ""]
-    (vids / "index.md").write_text("\n".join(out), encoding="utf-8")
+    (vids / "index.md").write_text(seo.decorate(Path("videos/index.md"), "\n".join(out), lessons, ROOT, VIDEOS), encoding="utf-8")
+    shutil.copy(ROOT / "llms.txt", DOCS / "llms.txt")
+    (DOCS / "llms-full.txt").write_text(seo.llms_full(ROOT), encoding="utf-8")
+    for extra in (ROOT / "tools" / "site-root").glob("*"):
+        shutil.copy(extra, DOCS / extra.name)  # search-engine verification and IndexNow key files
     print(f"docs/ assembled: {len(pages)} pages")
 
 

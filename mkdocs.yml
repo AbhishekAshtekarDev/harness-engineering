@@ -1,5 +1,5 @@
-site_name: Harness Engineering
-site_description: A free, complete course on harness engineering, the practice of designing the system around an AI agent so it does useful work reliably.
+site_name: Harness Engineering Course
+site_description: A free, open-source harness engineering course with 18 lessons, 11 tested Python projects, 12 videos and a runnable agent harness for building reliable AI agents.
 site_url: https://abhishekashtekardev.github.io/harness-engineering/
 site_author: Abhishek Ashtekar
 repo_url: https://github.com/AbhishekAshtekarDev/harness-engineering
@@ -10,6 +10,8 @@ copyright: Code MIT · Content CC BY 4.0 · Abhishek Ashtekar
 
 theme:
   name: material
+  custom_dir: overrides
+  language: en
   palette:
     - scheme: default
       primary: indigo
@@ -28,6 +30,13 @@ theme:
     - search.highlight
     - content.code.copy
     - toc.follow
+
+extra:
+  verification: {}
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AbhishekAshtekarDev/harness-engineering
+      name: Harness engineering course on GitHub
 
 markdown_extensions:
   - admonition

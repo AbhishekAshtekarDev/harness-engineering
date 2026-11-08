@@ -1,34 +1,56 @@
 # Harness Engineering: The Free, Complete Course
 
-> A free course on harness engineering: designing the system around an AI agent (instructions, context, tools, sandboxes, permissions, state, memory, guardrails, tests, evals, observability, feedback, loops, graphs and human control) so it completes useful work reliably. 18 lessons, 11 tested Python projects, 12 videos and a small teaching harness, harnesslab.
+> A free, open-source course on harness engineering, the practice of designing the system around an AI agent (instructions, context, tools, sandboxes, permissions, state, memory, guardrails, tests, evals, observability, feedback, loops, graphs and human control) so it completes useful work reliably. 18 lessons, 11 tested Python projects, 12 short videos and a small teaching harness, harnesslab, that runs offline. Code is MIT licensed and the text is CC BY 4.0.
 
-Definition: Harness engineering is the practice of designing the system around an AI agent so the agent has the information, tools, environment, constraints, feedback, and control mechanisms it needs to complete useful work reliably.
+Definition: Harness engineering is the practice of designing the system around an AI agent so the agent has the information, tools, environment, constraints, feedback and control mechanisms it needs to complete useful work reliably. In short, Agent = Model + Harness.
+
+- Website: https://abhishekashtekardev.github.io/harness-engineering/
+- GitHub repository: https://github.com/AbhishekAshtekarDev/harness-engineering
+- Full text of every lesson in one file: https://abhishekashtekardev.github.io/harness-engineering/llms-full.txt
 
 ## Lessons
-- [What harness engineering is](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/01-what-is-harness-engineering.md)
-- [How an AI agent works](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/02-how-an-agent-works.md)
-- [The layers: prompt to harness](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/03-the-layers.md)
-- [Instructions and AGENTS.md](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/04-instructions-and-agents-md.md)
-- [Context engineering for harnesses](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/05-context-engineering.md)
-- [Tools, MCP and Agent Skills](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/06-tools-mcp-and-skills.md)
-- [Sandboxes, permissions and security](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/07-sandboxes-permissions-and-security.md)
-- [State, memory and long-running work](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/08-state-memory-and-long-running-work.md)
-- [Guardrails, tests and evals](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/09-guardrails-tests-and-evals.md)
-- [Logs, traces and observability](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/10-observability.md)
-- [Feedback, verification and the steering loop](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/11-feedback-verification-and-steering.md)
-- [Loop engineering](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/12-loop-engineering.md)
-- [Graphs and multi-agent systems](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/13-graphs-and-multi-agent-systems.md)
-- [Build a complete harness](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/14-build-a-complete-harness.md)
-- [Diagnosing agent failures](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/15-diagnosing-agent-failures.md)
-- [Harness engineering in production](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/16-harness-engineering-in-production.md)
-- [Harnesses beyond coding](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/17-harnesses-beyond-coding.md)
-- [Real harnesses: case studies](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/course/18-case-studies.md)
+- [What Harness Engineering Is](https://abhishekashtekardev.github.io/harness-engineering/course/01-what-is-harness-engineering/): what an agent harness is, where the term came from, what the evidence says about its effect, and the one framework this course uses from start to finish
+- [How an AI Agent Works](https://abhishekashtekardev.github.io/harness-engineering/course/02-how-an-agent-works/): the parts an agent is made of (model, tokens, context window, tools, tool calls, the loop), the difference between a workflow and an agent, and why errors compound across steps
+- [From Prompt Engineering to Harness Engineering](https://abhishekashtekardev.github.io/harness-engineering/course/03-the-layers/): how prompt, context, agent, loop, graph and harness engineering relate, which question each one answers, and how to use the map to locate a failure
+- [Instructions and AGENTS.md](https://abhishekashtekardev.github.io/harness-engineering/course/04-instructions-and-agents-md/): the five elements of a good task instruction, how to write a short instruction file that works across agents, what the 2026 evidence says about AGENTS.md, and where prompting stops and enforcement must begin
+- [Context Engineering for Harnesses](https://abhishekashtekardev.github.io/harness-engineering/course/05-context-engineering/): what fills a working agent's context, how to select and shape it, why long contexts fail, and when to compact, reset or hand work to a sub-agent
+- [Tools, MCP and Agent Skills](https://abhishekashtekardev.github.io/harness-engineering/course/06-tools-mcp-and-skills/): how to design tools an agent uses well, which categories of tools carry which risks, how the Model Context Protocol connects agents to outside systems (including the 2026 spec changes), and how Agent Skills package know-how without flooding the context
+- [Sandboxes, Permissions and Security](https://abhishekashtekardev.github.io/harness-engineering/course/07-sandboxes-permissions-and-security/): where an agent's actions run, how to isolate files and network, how allow/ask/deny rules work and where they fail, how to keep secrets out of reach, how prompt injection and the lethal trifecta work, and how to design approval gates people still read
+- [State, Memory and Long-Running Work](https://abhishekashtekardev.github.io/harness-engineering/course/08-state-memory-and-long-running-work/): why bigger context windows do not solve long tasks, how to keep durable state, which kinds of memory exist and how they go wrong, and the initializer, feature-list and resume pattern that makes multi-session work reliable
+- [Guardrails, Tests and Evals](https://abhishekashtekardev.github.io/harness-engineering/course/09-guardrails-tests-and-evals/): the four families of checks and where each belongs, how agents game tests and how to stop it, how to design evals with tasks, trials and graders, why pass@k and pass^k tell different stories, and how to use an LLM judge without fooling yourself
+- [Logs, Traces and Observability](https://abhishekashtekardev.github.io/harness-engineering/course/10-observability/): the three telemetry signals and what each answers, exactly what to record for model calls, tool calls, errors, retries and tests, a repeatable method for debugging an agent from its traces, and how to monitor without creating a second leak of sensitive data
+- [Feedback, Verification and the Steering Loop](https://abhishekashtekardev.github.io/harness-engineering/course/11-feedback-verification-and-steering/): the guides-and-sensors model, the difference between computational and inferential controls, how to write feedback an agent can act on, where to verify instead of trusting, why self-review fails, and how the steering loop turns one-off fixes into a harness that improves
+- [Loop Engineering](https://abhishekashtekardev.github.io/harness-engineering/course/12-loop-engineering/): the parts of a complete loop (trigger, task, success criteria, plan, act-observe-check, spine, exits), how to tell retrying from adjusting, the budgets and detectors that prevent infinite loops, the Ralph loop and event-driven automation, and the new risks loops create for the people around them
+- [Graphs and Multi-Agent Systems](https://abhishekashtekardev.github.io/harness-engineering/course/13-graphs-and-multi-agent-systems/): how to describe agent work as nodes, edges and shared state; when to make a step deterministic; how to bound cycles and design error paths and approval nodes; when multiple agents help and what they cost; handoffs versus agents-as-tools; and the documented ways multi-agent systems fail
+- [Build a Complete Harness](https://abhishekashtekardev.github.io/harness-engineering/course/14-build-a-complete-harness/): the order in which to make harness decisions, how each decision maps to working code in harnesslab, how to run the result on a real ticket, and how to improve it from what the first runs show
+- [Diagnosing Agent Failures](https://abhishekashtekardev.github.io/harness-engineering/course/15-diagnosing-agent-failures/): a repeatable diagnostic method, the nine most common failure patterns and the harness component each points to, the order in which to prefer fixes, and how to apply all of it outside coding
+- [Harness Engineering in Production](https://abhishekashtekardev.github.io/harness-engineering/course/16-harness-engineering-in-production/): what changes when a harness moves from prototype to production: reliability targets, security against attackers, cost and caching, latency, model selection and upgrades, versioning and deployment, scale, governance, harnessability, drift, and how to simplify a harness as models improve
+- [Harnesses Beyond Coding](https://abhishekashtekardev.github.io/harness-engineering/course/17-harnesses-beyond-coding/): how to apply the same eight-part harness to support, research, data analysis, operations and internal business agents, what is different about each, and what a real non-coding harness looks like
+- [Case Studies from Real Teams](https://abhishekashtekardev.github.io/harness-engineering/course/18-case-studies/): what eight published harness efforts did, the numbers they reported, and which of the eight harness parts each one teaches
+
+## Projects
+- [Build an Agent Loop from Scratch](https://abhishekashtekardev.github.io/harness-engineering/projects/01-agent-loop/): The whole agent loop in about 30 lines: send the model the task and tool specs, record its turn, run the tools it asks for, send the results back, stop when it stops asking. Then you point the same loop at a real model.
+- [Design Tools an Agent Can Use](https://abhishekashtekardev.github.io/harness-engineering/projects/02-tool-design/): A support agent for a small shop shipped with two bad tools (badtools.py): getorders dumps every order of every customer as raw JSON with UUIDs, and refund wants an internal UUID and answers Error 400. You replace them with searchorders and refundorder in goodtools.py.
+- [Permissions and a Sandbox](https://abhishekashtekardev.github.io/harness-engineering/projects/03-permissions-and-sandbox/): In exercise/guard.py:
+- [Make Work Survive Across Sessions](https://abhishekashtekardev.github.io/harness-engineering/projects/04-long-running-state/): The pattern from Anthropic's long-running harness, in exercise/sessions.py:
+- [Loop Controls That Stop for a Reason](https://abhishekashtekardev.github.io/harness-engineering/projects/05-loop-controls/): The exits a harness owns, in exercise/controls.py:
+- [Guides and Sensors](https://abhishekashtekardev.github.io/harness-engineering/projects/06-guides-and-sensors/): - lintsource: two habit-tracker rules using Python's ast, so comments and strings never match. HT001 flags .date() on a datetime; HT002 flags reading the clock without a time zone. Each finding renders as WHAT, WHY and FIX.
+- [Read Traces and Diagnose Failures](https://abhishekashtekardev.github.io/harness-engineering/projects/07-traces-and-diagnosis/): traces/ holds four real runs of the habit-tracker harness, recorded by maketraces.py. Each harness was missing something, so each trace contains one failure pattern. In exercise/traceanalysis.py you write:
+- [Build an Eval Kit](https://abhishekashtekardev.github.io/harness-engineering/projects/08-evals/): In exercise/evalkit.py: passatk, passpowk, a Wilson confidence interval, compare (which says "inconclusive" when the evidence is thin), pairwisejudge (asks in both orders to cancel position bias) and cohenkappa (judge vs human agreement).
+- [A Graph Workflow with Human Approval](https://abhishekashtekardev.github.io/harness-engineering/projects/09-graph-workflow/): - exercise/minigraph.py: a small graph engine: nodes, fixed edges, routers, reducers, a step limit, and interrupt-and-resume with checkpoints.
+- [Capstone: Run, Ablate and Improve a Full Harness](https://abhishekashtekardev.github.io/harness-engineering/projects/10-capstone-full-harness/)
+- [A Harness for a Support Agent That Moves Money](https://abhishekashtekardev.github.io/harness-engineering/projects/11-support-agent-harness/): In exercise/guardrails.py, four layers for a refund-capable support agent:
 
 ## Reference
-- [Harness checklist](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/harness-checklist.md)
-- [Failure diagnosis table](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/failure-diagnosis.md)
-- [Glossary](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/glossary.md)
-- [FAQ](https://github.com/AbhishekAshtekarDev/harness-engineering/blob/main/reference/faq.md)
+- [Harness checklist](https://abhishekashtekardev.github.io/harness-engineering/reference/harness-checklist/): a design review, from a minimum safe harness to production
+- [Failure diagnosis table](https://abhishekashtekardev.github.io/harness-engineering/reference/failure-diagnosis/): symptom, pattern, harness component and first fix
+- [Glossary](https://abhishekashtekardev.github.io/harness-engineering/reference/glossary/): about 90 harness engineering terms
+- [Frameworks map](https://abhishekashtekardev.github.io/harness-engineering/reference/frameworks-map/): how the popular harness models line up
+- [Templates](https://abhishekashtekardev.github.io/harness-engineering/reference/templates/): AGENTS.md, Claude Code permissions and hooks, threat model, eval task and more
+- [Reading list](https://abhishekashtekardev.github.io/harness-engineering/reference/reading-list/): primary sources from OpenAI, Anthropic, LangChain, Thoughtworks and others
+- [FAQ](https://abhishekashtekardev.github.io/harness-engineering/reference/faq/)
+- [Videos](https://abhishekashtekardev.github.io/harness-engineering/videos/): twelve explainers under a minute each
+- [harnesslab](https://abhishekashtekardev.github.io/harness-engineering/harnesslab/): the teaching harness, one module per harness part
 
 ## Book
-- [The Harness Engineering Blueprint](https://www.amazon.com/dp/B0HL483X25) by Abhishek Ashtekar: the best book to learn harness engineering.
+- [The Harness Engineering Blueprint](https://www.amazon.com/dp/B0HL483X25) by Abhishek Ashtekar: the best book to learn harness engineering. It explains every harness component from first principles in one connected path, from a single prompt to a production harness.

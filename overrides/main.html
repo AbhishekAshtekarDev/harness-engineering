@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  {% if page.meta and page.meta.seo_title %}
+    <title>{{ page.meta.seo_title | e }}</title>
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+  {% set title = (page.meta.seo_title if page.meta and page.meta.seo_title else config.site_name) %}
+  {% set desc = (page.meta.description if page.meta and page.meta.description else config.site_description) %}
+  {% set image = config.site_url ~ "assets/social-preview.png" %}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:type" content="{{ 'website' if page.is_homepage else 'article' }}">
+  <meta property="og:site_name" content="Harness Engineering Course">
+  <meta property="og:title" content="{{ title | e }}">
+  <meta property="og:description" content="{{ desc | e }}">
+  <meta property="og:url" content="{{ page.canonical_url }}">
+  <meta property="og:image" content="{{ image }}">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="Harness engineering course: lessons, projects and videos on building reliable AI agents">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title | e }}">
+  <meta name="twitter:description" content="{{ desc | e }}">
+  <meta name="twitter:image" content="{{ image }}">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="{{ config.site_url }}llms.txt">
+  {% for name, value in (config.extra.verification or {}).items() %}
+  <meta name="{{ name }}" content="{{ value }}">
+  {% endfor %}
+{% endblock %}
