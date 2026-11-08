@@ -1,9 +1,11 @@
-# 06. Tools, MCP and Agent Skills
+# Tools, MCP and Agent Skills
 
-> A tool is a product whose user is a model. Design it for that user.
+Lesson 6 of 18 · Capability · about 50 minutes
 
-**You will learn** how to design tools an agent uses well, which categories of tools carry which risks, how the Model Context Protocol connects agents to outside systems (including the 2026 spec changes), and how Agent Skills package know-how without flooding the context.
-**Time:** 50 minutes · **Video:** [Tools, MCP and skills (1:10)](../videos/README.md#05-tools-mcp-and-skills) · **Project:** [02. Tool design](../projects/02-tool-design/)
+In this lesson you will learn how to design tools an agent uses well, which categories of tools carry which risks, how the Model Context Protocol connects agents to outside systems (including the 2026 spec changes), and how Agent Skills package know-how without flooding the context.
+
+**Video:** [Tools, MCP and skills (0:39)](../videos/README.md#05-tools-mcp-and-skills) · **Project:** [Design Tools an Agent Can Use](../projects/02-tool-design/)
+
 
 ---
 
@@ -53,7 +55,7 @@ Match the edit tool to the model. Cursor gives each model the edit format it was
 
 | Category | Gives the agent | Main risk | Usual control |
 |---|---|---|---|
-| File tools | Read, create, edit files | Writes outside scope | Path guard, writable folders (Lesson 07) |
+| File tools | Read, create, edit files | Writes outside scope | Path guard, writable folders (Lesson 7) |
 | Terminal | Any command | Everything: deletes, secrets, network | Sandbox, allow/ask/deny rules, timeouts |
 | Browser | Read pages, click, screenshot, verify UI | Prompt injection from page text | Treat content as untrusted, no secrets in reach |
 | Database | Query or change data | Destructive writes, data leaks | Read-only replicas, narrow tools, approvals |
@@ -163,7 +165,7 @@ Only about 50 short metadata entries load at startup. A skill's full instruction
 
 ## Try it
 
-Do [Project 02: Tool design](../projects/02-tool-design/). You replace two anti-pattern tools for a shop's support agent with tools that search instead of dumping, return readable rows, cap results, and fail with instructions. The tests check that your output is at least twenty times smaller and that every error tells the agent what to do next.
+Do [Project 2: Tool design](../projects/02-tool-design/). You replace two anti-pattern tools for a shop's support agent with tools that search instead of dumping, return readable rows, cap results, and fail with instructions. The tests check that your output is at least twenty times smaller and that every error tells the agent what to do next.
 
 ## Go deeper
 
@@ -171,4 +173,4 @@ Do [Project 02: Tool design](../projects/02-tool-design/). You replace two anti-
 - The [MCP specification](https://modelcontextprotocol.io/specification/2026-07-28) and its security principles.
 - The [Agent Skills specification](https://agentskills.io/specification).
 
-**Next:** [07. Sandboxes, Permissions and Security](07-sandboxes-permissions-and-security.md)
+**Next lesson:** [Sandboxes, Permissions and Security](07-sandboxes-permissions-and-security.md)

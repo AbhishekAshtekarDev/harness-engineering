@@ -1,6 +1,6 @@
-# Project 09: Graph Workflow
+# A Graph Workflow with Human Approval
 
-**Lesson:** [13. Graphs and multi-agent systems](../../course/13-graphs-and-multi-agent-systems.md) · **Time:** 90 minutes · **Optional:** `pip install langgraph`
+Project 9 of 11 · Goes with [Graphs and Multi-Agent Systems](../../course/13-graphs-and-multi-agent-systems.md) · about 90 minutes · optional: `pip install langgraph`
 
 ## What you build
 

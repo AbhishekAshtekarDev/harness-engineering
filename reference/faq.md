@@ -3,7 +3,7 @@
 ## Basics
 
 **What is harness engineering, in simple terms?**
-Building everything around an AI model that turns it into an agent you can trust with real work: what it is told, what it can see, which tools it gets, where it runs, what it may touch, how its work is checked, what gets recorded, and when it stops or asks a person. The model does the reasoning; the harness makes the reasoning safe, grounded and checkable. [Lesson 01](../course/01-what-is-harness-engineering.md).
+Building everything around an AI model that turns it into an agent you can trust with real work: what it is told, what it can see, which tools it gets, where it runs, what it may touch, how its work is checked, what gets recorded, and when it stops or asks a person. The model does the reasoning; the harness makes the reasoning safe, grounded and checkable. [Lesson 1](../course/01-what-is-harness-engineering.md).
 
 **Why is it called a harness?**
 Two older meanings combine. A horse harness connects a strong animal to a cart and lets a driver steer it. A software test harness runs code under controlled conditions and checks results. An agent harness does both: it points the model's capability at a task and checks what comes out.
@@ -29,7 +29,7 @@ An agent kept writing date code with the server's UTC date. Instead of adding "b
 Prompt engineering is how you tell the model what you want. Harness engineering designs the whole system, and prompts are one part of it. A prompt can ask the agent never to edit config files; the harness makes it impossible.
 
 **Harness engineering vs context engineering?**
-Context engineering decides what the model sees on each call. Most sources treat it as one part of the harness, alongside tools, environment, permissions, state and checks. HumanLayer frames it the other way around. The work is the same either way. [Lesson 03](../course/03-the-layers.md).
+Context engineering decides what the model sees on each call. Most sources treat it as one part of the harness, alongside tools, environment, permissions, state and checks. HumanLayer frames it the other way around. The work is the same either way. [Lesson 3](../course/03-the-layers.md).
 
 **Harness engineering vs loop engineering?**
 Loop engineering designs the cycles that keep work moving without a person prompting each step, and the rules that stop them. Loops run inside the harness and depend on its components (success criteria, verification, state, limits). [Lesson 12](../course/12-loop-engineering.md).
@@ -43,7 +43,7 @@ Both matter, in different ways. LangChain raised a coding agent from 52.8% to 66
 ## Practice
 
 **Do AGENTS.md files work?**
-Short, human-written ones built from observed failures do. An ETH Zurich study found context files in general did not improve success and raised cost over 20%, which matches the warning from OpenAI and others against long, generated files. Aim for about 60 to 100 lines that act as a map into your docs. [Lesson 04](../course/04-instructions-and-agents-md.md).
+Short, human-written ones built from observed failures do. An ETH Zurich study found context files in general did not improve success and raised cost over 20%, which matches the warning from OpenAI and others against long, generated files. Aim for about 60 to 100 lines that act as a map into your docs. [Lesson 4](../course/04-instructions-and-agents-md.md).
 
 **What are guides and sensors?**
 Birgitta Böckeler's terms. Guides steer the agent before it acts (instructions, skills, templates). Sensors check its work after (tests, linters, evaluators). You need both: without sensors the agent never learns whether rules worked; without guides it repeats mistakes.
@@ -52,16 +52,16 @@ Birgitta Böckeler's terms. Guides steer the agent before it acts (instructions,
 Every recurring mistake becomes a permanent rule or check, so the harness only moves forward. Hashimoto's version: when the agent makes a mistake, engineer a solution so it never makes that mistake again.
 
 **How do I sandbox an agent on my own machine?**
-Turn on your agent's built-in sandbox if it has one (Claude Code uses OS-level isolation; Codex defaults to no network). For stronger isolation, run commands in a Docker container with the network off, one mounted workspace, a non-root user and dropped capabilities. [Project 03](../projects/03-permissions-and-sandbox/) includes a ready script.
+Turn on your agent's built-in sandbox if it has one (Claude Code uses OS-level isolation; Codex defaults to no network). For stronger isolation, run commands in a Docker container with the network off, one mounted workspace, a non-root user and dropped capabilities. [Project 3](../projects/03-permissions-and-sandbox/) includes a ready script.
 
 **How do I keep context across sessions?**
-Write it down outside the model: a progress file, a structured feature list, commits after each verified step, and a resume routine that reads them and runs checks first. [Lesson 08](../course/08-state-memory-and-long-running-work.md).
+Write it down outside the model: a progress file, a structured feature list, commits after each verified step, and a resume routine that reads them and runs checks first. [Lesson 8](../course/08-state-memory-and-long-running-work.md).
 
 **How many subagents should I use?**
 Usually none, until a specific problem calls for them: independent verification, broad parallel research, more material than one context holds, or splitting permissions. Multi-agent systems use around 15 times the tokens of chat. [Lesson 13](../course/13-graphs-and-multi-agent-systems.md).
 
 **How do I measure whether my harness is good?**
-An eval suite of 20 to 50 real tasks, several trials each, graded on outcomes. Track success, pass^k for consistency, cost per successful task, escalation rate and reviewer acceptance. Run it on every harness change. [Lesson 09](../course/09-guardrails-tests-and-evals.md).
+An eval suite of 20 to 50 real tasks, several trials each, graded on outcomes. Track success, pass^k for consistency, cost per successful task, escalation rate and reviewer acceptance. Run it on every harness change. [Lesson 9](../course/09-guardrails-tests-and-evals.md).
 
 **Does a simple single-agent workflow need a harness?**
 It already has one: whatever gives it tools and a loop. The question is how much to add. Add a component when a real failure calls for it, and keep the simplest harness that gives the task the reliability it needs.

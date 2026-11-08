@@ -1,9 +1,11 @@
-# 10. Logs, Traces and Observability
+# Logs, Traces and Observability
 
-> Metrics tell you something changed. Traces tell you why. Record what the model saw as well as what it said.
+Lesson 10 of 18 · Checking and Visibility · about 45 minutes
 
-**You will learn** the three telemetry signals and what each answers, exactly what to record for model calls, tool calls, errors, retries and tests, a repeatable method for debugging an agent from its traces, and how to monitor without creating a second leak of sensitive data.
-**Time:** 45 minutes · **Project:** [07. Traces and diagnosis](../projects/07-traces-and-diagnosis/)
+In this lesson you will learn the three telemetry signals and what each answers, exactly what to record for model calls, tool calls, errors, retries and tests, a repeatable method for debugging an agent from its traces, and how to monitor without creating a second leak of sensitive data.
+
+**Project:** [Read Traces and Diagnose Failures](../projects/07-traces-and-diagnosis/)
+
 
 ---
 
@@ -58,9 +60,11 @@ Tool name, arguments, result (or a summary), duration, and **what the harness de
 
 ### Errors, retries and tests
 
-- **Errors.** Separate errors the agent saw and handled (a failing test it then fixed, which is normal work) from harness errors it never saw (a crash in tool-running code, which is a bug that deserves an alert).
-- **Retries.** Record both automatic retries (a rate-limited API call) and agent retries (a second attempt at a fix), each with its reason. Without them, a run that took four failed model calls and three failed fixes looks like one ordinary run.
-- **Tests.** Which ran, which passed and failed, messages and duration, linked to the edit that came before them. That link turns a list of runs into a picture of progress, and across many runs it exposes **flaky tests** that fail at random and send agents chasing problems that are not theirs.
+Separate the errors the agent saw and handled, such as a failing test it then fixed, which is normal work, from harness errors it never saw, such as a crash in the code that runs tools, which is a bug that deserves an alert.
+
+Record retries, both the automatic kind (a rate-limited API call) and the agent's own (a second attempt at a fix), each with its reason. Without them, a run that took four failed model calls and three failed fixes looks like one ordinary run.
+
+For every test run, record which tests ran, which passed and failed, the messages and the duration, linked to the edit that came before it. That link turns a list of test runs into a picture of progress. Across many runs it also exposes **flaky tests**, which pass and fail at random and send agents chasing problems that are not theirs.
 
 ### Versions
 
@@ -79,14 +83,14 @@ flowchart LR
   C --> X["Fix the component;<br/>add the cases to regression evals"]
 ```
 
-1. **Metrics** show the success rate fell on the day the code-search tool changed.
-2. **Filter traces** to failed time-zone tasks since that date.
-3. **Find the first wrong decision** in each. Later mistakes often follow from it. Here: the agent wrote its own conversion.
-4. **Read the spans before it.** The search now returns its top 3 matches instead of 10, and the helper, previously the fifth match, no longer appears.
-5. **Compare** with a successful trace from before the change, where the agent found and used the helper.
-6. **Fix the tool**, not the prompt: raise the limit or rank the helper higher. Add the failed tickets to the regression evals.
+1. The metrics show the success rate fell on the day the code-search tool changed.
+2. Filter the traces to failed time-zone tasks since that date.
+3. In each one, find the first wrong decision, because later mistakes often follow from it. Here, the agent wrote its own conversion.
+4. Read the spans right ahead of that decision. The search now returns its top 3 matches instead of 10, and the helper, previously the fifth match, no longer appears.
+5. Compare with a successful trace from before the change, where the agent found and used the helper.
+6. Fix the search tool by raising the limit or ranking the helper higher, and leave the prompt alone. Add the failed tickets to the regression evals.
 
-Anthropic advises reading eval transcripts regularly. Traces are those transcripts in production. [Project 07](../projects/07-traces-and-diagnosis/) gives you four recorded failed runs and asks you to write the code that finds each one's first problem, then diagnose them.
+Anthropic advises reading eval transcripts regularly. Traces are those transcripts in production. [Project 7](../projects/07-traces-and-diagnosis/) gives you four recorded failed runs and asks you to write the code that finds each one's first problem, then diagnose them.
 
 ## Monitoring and alerts
 
@@ -130,7 +134,7 @@ So you can compare runs before and after a change and attribute a behavior shift
 
 ## Try it
 
-Run `python -m harnesslab demo`, then `python -m harnesslab run --provider anthropic --trace runs/HT-142.jsonl` if you have a key, and print it with `python -m harnesslab trace runs/HT-142.jsonl`. Then do [Project 07](../projects/07-traces-and-diagnosis/).
+Run `python -m harnesslab demo`, then `python -m harnesslab run --provider anthropic --trace runs/HT-142.jsonl` if you have a key, and print it with `python -m harnesslab trace runs/HT-142.jsonl`. Then do [Project 7](../projects/07-traces-and-diagnosis/).
 
 ## Go deeper
 
@@ -138,4 +142,4 @@ Run `python -m harnesslab demo`, then `python -m harnesslab run --provider anthr
 - OpenAI Agents SDK, [Tracing](https://openai.github.io/openai-agents-python/tracing/): traces and spans for model turns, tool calls, guardrails and handoffs.
 - OpenAI, [Harness engineering](https://openai.com/index/harness-engineering/), the section on application legibility and the per-worktree observability stack.
 
-**Next:** [11. Feedback, Verification and the Steering Loop](11-feedback-verification-and-steering.md)
+**Next lesson:** [Feedback, Verification and the Steering Loop](11-feedback-verification-and-steering.md)

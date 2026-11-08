@@ -6,11 +6,11 @@ Different guides describe the harness with different lists. They overlap more th
 
 | # | Part | Question | Lessons |
 |---|---|---|---|
-| 1 | Guidance | What does the agent know? | 04, 05 |
-| 2 | Capability | What can it do? | 06 |
-| 3 | Environment and boundaries | Where does it act, and what can it reach? | 07 |
-| 4 | Continuity | What survives an interruption? | 08 |
-| 5 | Checking | Is the work acceptable? | 09 |
+| 1 | Guidance | What does the agent know? | 4, 5 |
+| 2 | Capability | What can it do? | 6 |
+| 3 | Environment and boundaries | Where does it act, and what can it reach? | 7 |
+| 4 | Continuity | What survives an interruption? | 8 |
+| 5 | Checking | Is the work acceptable? | 9 |
 | 6 | Visibility | What happened? | 10 |
 | 7 | Correction | How do the agent and the harness improve? | 11 |
 | 8 | Control flow | When does work start, branch and stop, and who decides? | 12, 13 |

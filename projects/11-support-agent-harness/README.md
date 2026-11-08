@@ -1,6 +1,6 @@
-# Project 11: A Harness for a Support Agent That Moves Money
+# A Harness for a Support Agent That Moves Money
 
-**Lesson:** [17. Harnesses beyond coding](../../course/17-harnesses-beyond-coding.md) · **Time:** 75 minutes
+Project 11 of 11 · Goes with [Harnesses Beyond Coding](../../course/17-harnesses-beyond-coding.md) · about 75 minutes
 
 ## What you build
 

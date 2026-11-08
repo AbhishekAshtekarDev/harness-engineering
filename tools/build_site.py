@@ -78,7 +78,7 @@ def main() -> None:
     vids = DOCS / "videos"
     vids.mkdir(parents=True, exist_ok=True)
     (vids / "posters").mkdir(exist_ok=True)
-    out = ["# Videos", "", "Twelve short narrated explainers, one per core idea. "
+    out = ["# Videos", "", "Twelve short narrated explainers, one per core idea, each under a minute. "
            f"Download the MP4 files from the [repository]({GH}/tree/main/videos).", ""]
     for v in VIDEOS:
         mp4 = ROOT / "videos" / f"{v['slug']}.mp4"
@@ -88,10 +88,10 @@ def main() -> None:
         if poster.exists():
             shutil.copy(poster, vids / "posters" / poster.name)
         idea = v["scenes"][-1]["idea"]
-        out += [f"## {v['id']}. {v['title']} {{#{v['slug']}}}", "",
+        out += [f"## {v['title']} {{#{v['slug']}}}", "",
                 f'<video controls preload="none" playsinline poster="posters/{v["id"]}.jpg" '
                 f'style="width:100%;border-radius:12px" src="{v["slug"]}.mp4"></video>', "",
-                f"**The idea:** {idea}", ""]
+                f"{idea}", ""]
     (vids / "index.md").write_text("\n".join(out), encoding="utf-8")
     print(f"docs/ assembled: {len(pages)} pages")
 

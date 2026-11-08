@@ -1,9 +1,9 @@
-# 18. Real Harnesses: Case Studies
+# Case Studies from Real Teams
 
-> Read what teams built, what broke, and what they removed. The patterns repeat.
+Lesson 18 of 18 · Putting It Together · about 45 minutes
 
-**You will learn** what eight published harness efforts did, the numbers they reported, and which of the eight harness parts each one teaches.
-**Time:** 45 minutes
+In this lesson you will learn what eight published harness efforts did, the numbers they reported, and which of the eight harness parts each one teaches.
+
 
 ---
 
@@ -32,7 +32,7 @@ Every figure below comes from the primary source linked in each heading, with it
 
 **Fix.** An initializer session writes `init.sh`, a progress file, an initial commit and a JSON feature list (200+ features in the example), each `passes: false`. Every later session orients itself (`pwd`, git log, progress file, feature list, `init.sh`, a basic end-to-end check), works on one feature, tests it as a user would with browser automation, flips only the `passes` field, commits and leaves a clean state. The two agents share one harness and differ only in their first prompt.
 
-**Lesson.** Continuity is a harness responsibility. Structured records the agent cannot freely rewrite, one unit of work per session, and verification before status changes solve problems a larger context window does not. [Lesson 08](08-state-memory-and-long-running-work.md), [Project 04](../projects/04-long-running-state/).
+**Lesson.** Continuity is a harness responsibility. Structured records the agent cannot freely rewrite, one unit of work per session, and verification before status changes solve problems a larger context window does not. [Lesson 8](08-state-memory-and-long-running-work.md), [Project 4](../projects/04-long-running-state/).
 
 ## 3. Anthropic: planner, generator, evaluator (Mar 2026)
 
@@ -84,7 +84,7 @@ Every figure below comes from the primary source linked in each heading, with it
 
 **Fix.** OS-level filesystem and network isolation (bubblewrap on Linux, Seatbelt on macOS) covering every subprocess, with a proxy enforcing allowed domains. In the cloud version, git credentials stay outside the sandbox and a proxy checks each push. Permission prompts fell 84% in internal use.
 
-**Lesson.** Boundaries the operating system enforces make it safe to give the agent freedom, and they hold when command rules miss a creative variation. [Lesson 07](07-sandboxes-permissions-and-security.md).
+**Lesson.** Boundaries the operating system enforces make it safe to give the agent freedom, and they hold when command rules miss a creative variation. [Lesson 7](07-sandboxes-permissions-and-security.md).
 
 ## 8. Anthropic: a multi-agent research system (Jun 2025)
 

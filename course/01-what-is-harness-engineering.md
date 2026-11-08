@@ -1,9 +1,11 @@
-# 01. What Harness Engineering Is
+# What Harness Engineering Is
 
-> The model supplies the intelligence. The harness decides what that intelligence can see, touch and prove.
+Lesson 1 of 18 · Foundations · about 35 minutes
 
-**You will learn** what an agent harness is, where the term came from, what the evidence says about its effect, and the one framework this course uses from start to finish.
-**Time:** 35 minutes · **Video:** [What is harness engineering? (1:10)](../videos/README.md#01-what-is-harness-engineering) · **Hands-on:** run `python -m harnesslab demo` from the [harnesslab](../harnesslab/) folder
+In this lesson you will learn what an agent harness is, where the term came from, what the evidence says about its effect, and the one framework this course uses from start to finish.
+
+**Video:** [What is harness engineering? (0:53)](../videos/README.md#01-what-is-harness-engineering) · **Hands-on:** run `python -m harnesslab demo` from the [harnesslab](../harnesslab/) folder
+
 
 ---
 
@@ -82,7 +84,7 @@ Böckeler points out that the word means different things depending on where you
 |---|---|
 | You own the outer harness: AGENTS.md, rules, hooks, skills, tests | You own both layers, including the loop, tool execution and context assembly |
 | Typical tools: Claude Code, Codex, Cursor, Gemini CLI, OpenCode, Pi | Typical tools: Claude Agent SDK, OpenAI Agents SDK, LangGraph, your own code |
-| Lessons 04, 06, 07, 11 and 12 apply directly | Every lesson applies, and [harnesslab](../harnesslab/) shows each layer in code |
+| Lessons 4, 6, 7, 11 and 12 apply directly | Every lesson applies, and [harnesslab](../harnesslab/) shows each layer in code |
 
 Most competing courses teach only the first column. This course teaches both, because the same components and the same questions apply whether you write the loop or configure one.
 
@@ -92,9 +94,9 @@ Two related words cause confusion. A **framework** (LangGraph, the OpenAI Agents
 
 The strongest argument for harness engineering is that the same model performs very differently inside different harnesses.
 
-- **LangChain, Feb 2026.** With the model fixed at gpt-5.2-codex, harness changes alone took deepagents-cli from 52.8% to 66.5% on Terminal-Bench 2.0, from outside the top 30 to the top 5. The changes included a build-and-verify loop in the prompt, a forced verification pass before the agent could finish, a startup map of the environment, time-budget warnings, and loop detection that nudged the agent after repeated edits to one file.
-- **HumanLayer, Mar 2026.** On the same benchmark, one model ranked 33rd inside one popular harness and about 5th inside another.
-- **Anthropic, Mar 2026.** A solo agent built a retro game maker in 20 minutes for $9, and the core feature did not work. A planner, generator and evaluator harness took six hours and $200, and the app worked ([harness design for long-running apps](https://www.anthropic.com/engineering/harness-design-long-running-apps)).
+In February 2026, LangChain kept the model fixed at gpt-5.2-codex and changed only the harness, and its deepagents-cli agent went from 52.8% to 66.5% on Terminal-Bench 2.0, from outside the top 30 to the top 5. The changes included a build-and-verify loop in the prompt, a forced verification pass before the agent could finish, a startup map of the environment, time-budget warnings, and loop detection that nudged the agent after repeated edits to one file.
+
+A month later, HumanLayer pointed out that on the same benchmark one model ranked 33rd inside one popular harness and about 5th inside another. Anthropic reported the sharpest contrast the same month: a solo agent built a retro game maker in 20 minutes for $9, and the core feature did not work. A planner, generator and evaluator harness took six hours and $200, and the app worked ([harness design for long-running apps](https://www.anthropic.com/engineering/harness-design-long-running-apps)).
 
 The evidence also has a counterweight. The [HarnessTax study](https://harnesstax.github.io/) from UC Berkeley (Sep 2026) ran 21 model and harness pairs and found that the choice among mature coding harnesses changed success rates only a few points but changed cost by up to five times. Read the two findings together. A weak or missing harness costs you a great deal of success. Among good harnesses, the differences show up more in cost, speed and safety than in raw pass rates. A minimal harness with four tools sat on the cost and success frontier in that study, which supports a principle you will meet again and again in this course: the best harness is the simplest one that gives the task the reliability it needs.
 
@@ -117,11 +119,11 @@ flowchart TB
 
 | Part | The question it answers | Failure when missing | Lessons |
 |---|---|---|---|
-| Guidance | What does the agent know? | Ignores conventions, follows a stale document | 04, 05 |
-| Capability | What can it do? | Describes the work instead of doing it, misuses tools | 06 |
-| Environment and boundaries | Where does it act, and what can it reach? | Edits files it should not touch, leaks secrets | 07 |
-| Continuity | What survives an interruption? | Redoes work, forgets decisions, opens a duplicate PR | 08 |
-| Checking | Is the work acceptable? | Passes its own tests, fails in production | 09 |
+| Guidance | What does the agent know? | Ignores conventions, follows a stale document | 4, 5 |
+| Capability | What can it do? | Describes the work instead of doing it, misuses tools | 6 |
+| Environment and boundaries | Where does it act, and what can it reach? | Edits files it should not touch, leaks secrets | 7 |
+| Continuity | What survives an interruption? | Redoes work, forgets decisions, opens a duplicate PR | 8 |
+| Checking | Is the work acceptable? | Passes its own tests, fails in production | 9 |
 | Visibility | What happened? | A failure nobody can explain | 10 |
 | Correction | How does the agent and the harness improve? | The same mistake on every task | 11 |
 | Control flow | When does work start, branch and stop? | Stops too early, loops forever, needs a human prompt each step | 12, 13 |
@@ -174,4 +176,4 @@ Watch the log. A scripted agent makes the mistakes real agents make: it uses the
 - Read Böckeler's [Harness engineering for coding agent users](https://martinfowler.com/articles/harness-engineering.html) for the guides and sensors model you will use in [Lesson 11](11-feedback-verification-and-steering.md).
 - Read LangChain's [Anatomy of an Agent Harness](https://www.langchain.com/blog/the-anatomy-of-an-agent-harness) for a component list derived backwards from the behavior you want.
 
-**Next:** [02. How an AI Agent Works](02-how-an-agent-works.md)
+**Next lesson:** [How an AI Agent Works](02-how-an-agent-works.md)

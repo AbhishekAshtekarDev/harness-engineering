@@ -1,9 +1,11 @@
-# 15. Diagnosing Agent Failures
+# Diagnosing Agent Failures
 
-> A failing agent is a failure with an address. Find the address before you touch the prompt.
+Lesson 15 of 18 · Putting It Together · about 50 minutes
 
-**You will learn** a repeatable diagnostic method, the nine most common failure patterns and the harness component each points to, the order in which to prefer fixes, and how to apply all of it outside coding.
-**Time:** 50 minutes · **Video:** [Where is the bug? (1:10)](../videos/README.md#12-diagnosing-failures) · **Project:** [07. Traces and diagnosis](../projects/07-traces-and-diagnosis/) · **Reference:** [Failure diagnosis table](../reference/failure-diagnosis.md)
+In this lesson you will learn a repeatable diagnostic method, the nine most common failure patterns and the harness component each points to, the order in which to prefer fixes, and how to apply all of it outside coding.
+
+**Video:** [Where is the bug? (0:34)](../videos/README.md#12-diagnosing-failures) · **Project:** [Read Traces and Diagnose Failures](../projects/07-traces-and-diagnosis/) · **Reference:** [Failure diagnosis table](../reference/failure-diagnosis.md)
+
 
 ---
 
@@ -88,7 +90,7 @@ A prompt line saying "be careful to pick the right order" would have left the cr
 
 ## Practice on recorded runs
 
-[Project 07](../projects/07-traces-and-diagnosis/) ships four real traces from the habit-tracker harness, each with one failure built in by an incomplete harness:
+[Project 7](../projects/07-traces-and-diagnosis/) ships four real traces from the habit-tracker harness, each with one failure built in by an incomplete harness:
 
 | Run | What the trace shows | Your job |
 |---|---|---|
@@ -121,4 +123,4 @@ Agent behavior is non-deterministic and changes interact. If you change three th
 - Cemri et al., [Why Do Multi-Agent LLM Systems Fail?](https://arxiv.org/abs/2503.13657): the MAST taxonomy.
 - LangChain, [Improving deep agents with harness engineering](https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering): a trace-analyzer skill that turns error analysis into targeted harness edits.
 
-**Next:** [16. Harness Engineering in Production](16-harness-engineering-in-production.md)
+**Next lesson:** [Harness Engineering in Production](16-harness-engineering-in-production.md)

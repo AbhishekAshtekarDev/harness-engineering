@@ -1,6 +1,6 @@
-# Project 04: Long-Running State
+# Make Work Survive Across Sessions
 
-**Lesson:** [08. State, memory and long-running work](../../course/08-state-memory-and-long-running-work.md) · **Time:** 75 minutes
+Project 4 of 11 · Goes with [State, Memory and Long-Running Work](../../course/08-state-memory-and-long-running-work.md) · about 75 minutes
 
 ## What you build
 

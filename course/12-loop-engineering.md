@@ -1,9 +1,11 @@
-# 12. Loop Engineering
+# Loop Engineering
 
-> Stop being the person who types the next prompt. Design the system that types it, and the rule that stops it.
+Lesson 12 of 18 · Control Flow · about 50 minutes
 
-**You will learn** the parts of a complete loop (trigger, task, success criteria, plan, act-observe-check, spine, exits), how to tell retrying from adjusting, the budgets and detectors that prevent infinite loops, the Ralph loop and event-driven automation, and the new risks loops create for the people around them.
-**Time:** 50 minutes · **Video:** [Loops and stop conditions (1:10)](../videos/README.md#10-loops-and-stop-conditions) · **Project:** [05. Loop controls](../projects/05-loop-controls/)
+In this lesson you will learn the parts of a complete loop (trigger, task, success criteria, plan, act-observe-check, spine, exits), how to tell retrying from adjusting, the budgets and detectors that prevent infinite loops, the Ralph loop and event-driven automation, and the new risks loops create for the people around them.
+
+**Video:** [Loops and stop conditions (0:34)](../videos/README.md#10-loops-and-stop-conditions) · **Project:** [Loop Controls That Stop for a Reason](../projects/05-loop-controls/)
+
 
 ---
 
@@ -57,7 +59,7 @@ The goal has to be checkable on every iteration. IBM's contrast: "make my websit
 | Transient | API timeout, HTTP 429 or 503, connection reset | Retry the same thing with **exponential backoff** (wait 1s, 2s, 4s...) |
 | Substantive | A test fails because the logic is wrong | **Adjust**: change the code, revise the plan, gather context, or roll back and try another approach |
 
-Running wrong code again produces the same failure. A good loop tells the agent which kind of failure it faces. [Project 05](../projects/05-loop-controls/) has you write the classifier and the backoff schedule.
+Running wrong code again produces the same failure. A good loop tells the agent which kind of failure it faces. [Project 5](../projects/05-loop-controls/) has you write the classifier and the backoff schedule.
 
 ### The spine
 
@@ -109,7 +111,7 @@ The OpenAI Agents SDK caps the turns in a run and raises a specific error when a
 | A dependency keeps failing | A **circuit breaker** stops calling it for a cool-down period |
 | None of the above caught it | Alerts on unusually long or expensive runs |
 
-**Progress detection** stops a run when several iterations pass without improvement, for example no increase in passing tests. harnesslab's loop implements budgets, repeat refusal and a no-progress window; Project 05 has you build all of the defenses above as small tested functions.
+**Progress detection** stops a run when several iterations pass without improvement, for example no increase in passing tests. harnesslab's loop implements budgets, repeat refusal and a no-progress window; Project 5 has you build all of the defenses above as small tested functions.
 
 ## People still matter, differently
 
@@ -147,7 +149,7 @@ The loop retriggers itself indefinitely. Ignore events whose actor is the agent'
 
 ## Try it
 
-Do [Project 05: Loop controls](../projects/05-loop-controls/): budgets, no-progress detection, repeat and oscillation detection, failure classification, exponential backoff, a circuit breaker and self-event filtering, each with tests.
+Do [Project 5: Loop controls](../projects/05-loop-controls/): budgets, no-progress detection, repeat and oscillation detection, failure classification, exponential backoff, a circuit breaker and self-event filtering, each with tests.
 
 ## Go deeper
 
@@ -155,4 +157,4 @@ Do [Project 05: Loop controls](../projects/05-loop-controls/): budgets, no-progr
 - Addy Osmani, [Loop engineering](https://addyosmani.com/blog/loop-engineering/).
 - HumanLayer, [Why software factories fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md).
 
-**Next:** [13. Graphs and Multi-Agent Systems](13-graphs-and-multi-agent-systems.md)
+**Next lesson:** [Graphs and Multi-Agent Systems](13-graphs-and-multi-agent-systems.md)

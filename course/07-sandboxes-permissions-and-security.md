@@ -1,9 +1,11 @@
-# 07. Sandboxes, Permissions and Security
+# Sandboxes, Permissions and Security
 
-> Command rules are tripwires. The sandbox is the wall. Build both, and trust the wall.
+Lesson 7 of 18 · Boundaries · about 60 minutes
 
-**You will learn** where an agent's actions run, how to isolate files and network, how allow/ask/deny rules work and where they fail, how to keep secrets out of reach, how prompt injection and the lethal trifecta work, and how to design approval gates people still read.
-**Time:** 60 minutes · **Video:** [The sandbox and the lethal trifecta (1:15)](../videos/README.md#06-sandbox-and-the-lethal-trifecta) · **Project:** [03. Permissions and sandbox](../projects/03-permissions-and-sandbox/) · **Worksheet:** [Threat model](../reference/templates/threat-model.md)
+In this lesson you will learn where an agent's actions run, how to isolate files and network, how allow/ask/deny rules work and where they fail, how to keep secrets out of reach, how prompt injection and the lethal trifecta work, and how to design approval gates people still read.
+
+**Video:** [The sandbox and the lethal trifecta (0:47)](../videos/README.md#06-sandbox-and-the-lethal-trifecta) · **Project:** [Permissions and a Sandbox](../projects/03-permissions-and-sandbox/) · **Worksheet:** [Threat model](../reference/templates/threat-model.md)
+
 
 ---
 
@@ -36,7 +38,7 @@ You need both. Without network isolation, a compromised agent reads a key inside
 
 A **worktree** is an extra working directory attached to the same repository with its own branch checked out, so several agents can work on different branches at once. OpenAI's team made its app bootable per worktree, so each agent could start and test its own copy. Worktrees organize parallel work; they are not a security boundary.
 
-A **container** gives each task the same image (language version, dependencies, test tools), a disposable filesystem, and only the network and files you grant. The [Project 03 sandbox script](../projects/03-permissions-and-sandbox/sandbox/run-in-sandbox.sh) runs a command with `--network none`, a read-only image, one mounted workspace, a non-root user, all capabilities dropped and limits on processes, memory and CPU. Install dependencies when you build the image, then run the task with the network closed.
+A **container** gives each task the same image (language version, dependencies, test tools), a disposable filesystem, and only the network and files you grant. The [Project 3 sandbox script](../projects/03-permissions-and-sandbox/sandbox/run-in-sandbox.sh) runs a command with `--network none`, a read-only image, one mounted workspace, a non-root user, all capabilities dropped and limits on processes, memory and CPU. Install dependencies when you build the image, then run the task with the network closed.
 
 When the top question on a November 2026 "Ask HN: What's your current AI agentic setup?" thread was how to isolate an agent on your own machine, most answers pointed to the same place: Docker or devcontainers.
 
@@ -54,7 +56,7 @@ Inside the environment, rules decide which tool calls run automatically, which n
 }
 ```
 
-Rules shape normal behavior well. They are weak as a security boundary, because they match the text of a command and the same action has many spellings. Claude Code's own documentation notes that a rule blocking one form of `git push` does not match the same push written with different arguments. [Project 03](../projects/03-permissions-and-sandbox/) includes a test that documents exactly this:
+Rules shape normal behavior well. They are weak as a security boundary, because they match the text of a command and the same action has many spellings. Claude Code's own documentation notes that a rule blocking one form of `git push` does not match the same push written with different arguments. [Project 3](../projects/03-permissions-and-sandbox/) includes a test that documents exactly this:
 
 ```text
 deny rule: git push*
@@ -99,7 +101,7 @@ No current technique makes injection impossible, and Willison points out that a 
 | Untrusted content | Separate agents: one reads untrusted input and passes a summary to another that holds write access |
 | External communication | Network closed except narrow, approved actions through a proxy |
 
-[Project 07](../projects/07-traces-and-diagnosis/)'s run D replays this attack against the habit-tracker harness: a ticket comment tells agents to POST the config file to an outside server. The deny rule blocks the request, the path guard blocks the follow-up config edit, and the trace records both.
+[Project 7](../projects/07-traces-and-diagnosis/)'s run D replays this attack against the habit-tracker harness: a ticket comment tells agents to POST the config file to an outside server. The deny rule blocks the request, the path guard blocks the follow-up config edit, and the trace records both.
 
 **Tool poisoning** is the supply-chain version: an MCP server or skill whose descriptions or outputs carry hidden instructions, or whose code does something other than it claims. Review every server and skill before an agent can use it, as you would a new third-party library.
 
@@ -166,7 +168,7 @@ Move most of those actions inside a sandbox where they are safe without approval
 
 ## Try it
 
-Do [Project 03: Permissions and sandbox](../projects/03-permissions-and-sandbox/). You implement deny-first rules, a path guard that survives traversal and symlinks, an allow-list environment builder and a trifecta check, then run the agent's commands inside the Docker sandbox. Fill in the [threat model worksheet](../reference/templates/threat-model.md) for an agent you use.
+Do [Project 3: Permissions and sandbox](../projects/03-permissions-and-sandbox/). You implement deny-first rules, a path guard that survives traversal and symlinks, an allow-list environment builder and a trifecta check, then run the agent's commands inside the Docker sandbox. Fill in the [threat model worksheet](../reference/templates/threat-model.md) for an agent you use.
 
 ## Go deeper
 
@@ -174,4 +176,4 @@ Do [Project 03: Permissions and sandbox](../projects/03-permissions-and-sandbox/
 - Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/).
 - OWASP, [LLM01 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [LLM06 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/).
 
-**Next:** [08. State, Memory and Long-Running Work](08-state-memory-and-long-running-work.md)
+**Next lesson:** [State, Memory and Long-Running Work](08-state-memory-and-long-running-work.md)

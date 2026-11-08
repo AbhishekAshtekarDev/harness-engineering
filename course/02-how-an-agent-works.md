@@ -1,9 +1,11 @@
-# 02. How an AI Agent Works
+# How an AI Agent Works
 
-> An agent is about twenty lines of loop. Everything that makes it trustworthy lives around those lines.
+Lesson 2 of 18 · Foundations · about 40 minutes
 
-**You will learn** the parts an agent is made of (model, tokens, context window, tools, tool calls, the loop), the difference between a workflow and an agent, and why errors compound across steps.
-**Time:** 40 minutes · **Video:** [The agent loop (1:05)](../videos/README.md#02-the-agent-loop) · **Project:** [01. Build an agent loop](../projects/01-agent-loop/)
+In this lesson you will learn the parts an agent is made of (model, tokens, context window, tools, tool calls, the loop), the difference between a workflow and an agent, and why errors compound across steps.
+
+**Video:** [The agent loop (0:45)](../videos/README.md#02-the-agent-loop) · **Project:** [Build an Agent Loop from Scratch](../projects/01-agent-loop/)
+
 
 ---
 
@@ -16,7 +18,7 @@ Two limits shape everything in this course:
 1. The model knows only what it learned in training plus what you put in the current request.
 2. At the API level the model keeps no memory between requests. If the application does not send the history back, the model has never seen it.
 
-Everything the model can use during one request must fit in its **context window**: the system instructions, the conversation so far, any files or tool results, and the response it is writing. Windows now run to hundreds of thousands of tokens and beyond, yet they stay finite, and [Lesson 05](05-context-engineering.md) shows that quality drops well before the window is full.
+Everything the model can use during one request must fit in its **context window**: the system instructions, the conversation so far, any files or tool results, and the response it is writing. Windows now run to hundreds of thousands of tokens and beyond, yet they stay finite, and [Lesson 5](05-context-engineering.md) shows that quality drops well before the window is full.
 
 ## Tools and tool calls
 
@@ -66,7 +68,7 @@ for turn in range(max_turns):                       # the harness owns this limi
 return "stopped: turn limit reached"
 ```
 
-That is the whole idea, and [Project 01](../projects/01-agent-loop/) has you write it and run it against a scripted model and a real one. Read the comments carefully, because each one points at a harness decision the short loop hides:
+That is the whole idea, and [Project 1](../projects/01-agent-loop/) has you write it and run it against a scripted model and a real one. Read the comments carefully, because each one points at a harness decision the short loop hides:
 
 - **When does it stop?** The model's claim that it has finished is not evidence. A model can declare success on a feature that does not work.
 - **How many times may it run?** A confused agent repeats the same failing action. Something outside the model must cap attempts, tokens, time and money.
@@ -105,15 +107,15 @@ Suppose a task takes 20 steps and each step succeeds 95% of the time independent
 
 Three harness strategies follow directly from this table, and later lessons build each one:
 
-1. **Raise per-step reliability** with better context and better tools (Lessons 04 to 06).
+1. **Raise per-step reliability** with better context and better tools (Lessons 4 to 6).
 2. **Catch errors early**, before later steps build on them, with fast feedback after each step (Lesson 11).
-3. **Shorten the chain** with checkpoints, one task per session, and verification at boundaries (Lessons 08 and 12).
+3. **Shorten the chain** with checkpoints, one task per session, and verification at boundaries (Lessons 8 and 12).
 
 METR's research on task length adds a reason this matters more each year. The length of software tasks frontier models can complete at 50% reliability has [doubled roughly every seven months](https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/) for six years. Longer tasks mean longer chains, and longer chains mean the harness carries more of the reliability.
 
 ## The minimum harness
 
-At the end of this lesson the habit-tracker agent has a model, instructions, a context window, four tools and a loop. On a good day it ships the weekly streak. On a bad day it edits files it should not touch, skips the tests, runs for an hour without progress, or reports success on code that breaks for users in another time zone, and you have no record of why. Each of those bad days points to a different part of the harness, and [Lesson 03](03-the-layers.md) gives you the map.
+At the end of this lesson the habit-tracker agent has a model, instructions, a context window, four tools and a loop. On a good day it ships the weekly streak. On a bad day it edits files it should not touch, skips the tests, runs for an hour without progress, or reports success on code that breaks for users in another time zone, and you have no record of why. Each of those bad days points to a different part of the harness, and [Lesson 3](03-the-layers.md) gives you the map.
 
 ## Check yourself
 
@@ -139,11 +141,11 @@ A tool result marked as an error, with a message it can act on: what failed and,
 
 ## Try it
 
-Do [Project 01: Build an agent loop from scratch](../projects/01-agent-loop/). You write `run_agent` and `execute_tool`, pass five tests against a scripted model, then point the same loop at Claude or an OpenAI-compatible model with `run_real.py`.
+Do [Project 1: Build an agent loop from scratch](../projects/01-agent-loop/). You write `run_agent` and `execute_tool`, pass five tests against a scripted model, then point the same loop at Claude or an OpenAI-compatible model with `run_real.py`.
 
 ## Go deeper
 
 - Anthropic's [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents) defines workflows, agents and the five composable patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer) used in [Lesson 13](13-graphs-and-multi-agent-systems.md).
 - OpenAI's [Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/) shows how a production coding agent structures the same loop.
 
-**Next:** [03. The Layers: From Prompt to Harness](03-the-layers.md)
+**Next lesson:** [From Prompt Engineering to Harness Engineering](03-the-layers.md)

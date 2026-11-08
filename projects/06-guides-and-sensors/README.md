@@ -1,6 +1,6 @@
-# Project 06: Guides and Sensors
+# Guides and Sensors
 
-**Lesson:** [11. Feedback, verification and the steering loop](../../course/11-feedback-verification-and-steering.md) · **Time:** 60 minutes
+Project 6 of 11 · Goes with [Feedback, Verification and the Steering Loop](../../course/11-feedback-verification-and-steering.md) · about 60 minutes
 
 ## What you build
 

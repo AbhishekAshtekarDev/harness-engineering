@@ -1,9 +1,11 @@
-# 03. The Layers: From Prompt to Harness
+# From Prompt Engineering to Harness Engineering
 
-> New layers wrap the old ones. The prompt still matters inside a harness, the way a function still matters inside a program.
+Lesson 3 of 18 · Foundations · about 25 minutes
 
-**You will learn** how prompt, context, agent, loop, graph and harness engineering relate, which question each one answers, and how to use the map to locate a failure.
-**Time:** 25 minutes · **Video:** [Six layers, one map (1:00)](../videos/README.md#03-the-layers)
+In this lesson you will learn how prompt, context, agent, loop, graph and harness engineering relate, which question each one answers, and how to use the map to locate a failure.
+
+**Video:** [Six layers, one map (0:35)](../videos/README.md#03-the-layers)
+
 
 ---
 
@@ -74,7 +76,7 @@ flowchart LR
 
 ## Why the course follows this order
 
-Lessons 04 and 05 cover the layers that come before the harness (prompt and context), with agent engineering threaded through the evals and observability lessons. Lessons 06 to 11 build the harness one component at a time. Loops and graphs come after the components (Lessons 12 and 13), because a loop cannot stop correctly without success criteria and verification, and cannot resume without saved state, and a graph cannot route work safely without permissions and checks at its nodes.
+Lessons 4 and 5 cover the layers that come before the harness (prompt and context), with agent engineering threaded through the evals and observability lessons. Lessons 6 to 11 build the harness one component at a time. Loops and graphs come after the components (Lessons 12 and 13), because a loop cannot stop correctly without success criteria and verification, and cannot resume without saved state, and a graph cannot route work safely without permissions and checks at its nodes.
 
 ## Check yourself
 
@@ -98,4 +100,4 @@ It is a process (build, test, ship, observe, refine) applied to the whole system
 - Anthropic, [Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents): context engineering as the natural progression of prompt engineering.
 - LangChain, [Agent Frameworks, Runtimes, and Harnesses, Oh My!](https://blog.langchain.com/agent-frameworks-runtimes-and-harnesses-oh-my/): where frameworks, runtimes and harnesses sit relative to each other.
 
-**Next:** [04. Instructions and AGENTS.md](04-instructions-and-agents-md.md)
+**Next lesson:** [Instructions and AGENTS.md](04-instructions-and-agents-md.md)

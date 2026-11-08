@@ -179,7 +179,7 @@ class Builder:
         start, dur = info["start"], info["dur"]
         body: list[str] = []
         if sc.get("h"):
-            body.append(f'<div class="eb">Lesson {self.v["lesson"]} · {esc(self.v["title"])}</div>')
+            body.append(f'<div class="eb">Lesson {int(self.v["lesson"])} · {esc(self.v["title"])}</div>')
             body.append(f'<div class="ebt" id="{sid}h">{esc(sc["h"])}</div>')
             self.js.append(f'tl.fromTo("#{sid}h",{{opacity:0,y:20}},{{opacity:1,y:0,duration:.5,ease:"power3.out"}},{start + 0.15});')
         getattr(self, "k_" + sc["kind"])(si, sc, body)
@@ -348,7 +348,7 @@ class Builder:
         i1, r1, p1 = self.uid("id"), self.uid("ru"), self.uid("rp")
         body.append(f'<div class="idea" id="{i1}" style="opacity:0">{esc(sc["idea"])}</div>')
         body.append(f'<div class="rule" id="{r1}"></div>')
-        body.append(f'<div class="repo" id="{p1}" style="opacity:0">Lesson {self.v["lesson"]} · <b>{REPO}</b></div>')
+        body.append(f'<div class="repo" id="{p1}" style="opacity:0">Lesson {int(self.v["lesson"])} · <b>{REPO}</b></div>')
         t0 = self.tl["scenes"][si]["cues"][0]["t"]
         self.reveal(i1, t0 - 0.1, "up", None)
         self.js.append(f'tl.fromTo("#{r1}",{{scaleX:0,transformOrigin:"left center"}},{{scaleX:1,duration:.6,ease:"power3.out"}},{t0 + 0.4});')

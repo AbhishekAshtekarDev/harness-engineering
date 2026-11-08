@@ -1,9 +1,11 @@
-# 04. Instructions and AGENTS.md
+# Instructions and AGENTS.md
 
-> Give the agent a map, not a manual. Every line in it should trace back to a mistake you saw.
+Lesson 4 of 18 · Guidance · about 40 minutes
 
-**You will learn** the five elements of a good task instruction, how to write a short instruction file that works across agents, what the 2026 evidence says about AGENTS.md, and where prompting stops and enforcement must begin.
-**Time:** 40 minutes · **Template:** [AGENTS.md template](../reference/templates/AGENTS.md) · **Example:** [habit-tracker AGENTS.md](../examples/habit-tracker/AGENTS.md)
+In this lesson you will learn the five elements of a good task instruction, how to write a short instruction file that works across agents, what the 2026 evidence says about AGENTS.md, and where prompting stops and enforcement must begin.
+
+**Template:** [AGENTS.md template](../reference/templates/AGENTS.md) · **Example:** [habit-tracker AGENTS.md](../examples/habit-tracker/AGENTS.md)
+
 
 ---
 
@@ -86,9 +88,7 @@ Progressive disclosure means revealing information in layers as it becomes relev
 
 Rules accumulate. Keep each one honest:
 
-- **Provenance.** Note the failure that created it (a PR number or one sentence).
-- **Scope.** Put rules that apply to one folder in a nested AGENTS.md there, not in the root.
-- **Expiry.** Review rules that have not mattered in weeks. A rule about a library you removed costs tokens and confuses the agent. Delete it.
+Note the failure that created each rule, as a PR number or a single sentence, so a reviewer can tell later whether the rule still earns its place. Put rules that apply to one folder in a nested AGENTS.md inside that folder instead of the root file. Review rules that have not mattered in weeks: a rule about a library you removed costs tokens on every call and confuses the agent, so delete it.
 
 ## Where prompting stops
 
@@ -96,11 +96,11 @@ An instruction is a request. The model usually follows it and occasionally does 
 
 | Rule | Prompt can say it | Harness enforces it with |
 |---|---|---|
-| Never edit `config/` | Yes | Path guard or OS sandbox (Lesson 07) |
+| Never edit `config/` | Yes | Path guard or OS sandbox (Lesson 7) |
 | Run the tests before finishing | Yes | Verification on every "done" claim (Lesson 11) |
 | Use the time-zone helper | Yes | A lint rule that explains the fix (Lesson 11) |
-| Never push to main | Yes | Deny rule plus a credential that cannot push (Lesson 07) |
-| Keep weekly targets between 1 and 7 | Yes | Business-rule check in code and a test (Lesson 09) |
+| Never push to main | Yes | Deny rule plus a credential that cannot push (Lesson 7) |
+| Keep weekly targets between 1 and 7 | Yes | Business-rule check in code and a test (Lesson 9) |
 
 The pattern repeats through the course: the prompt communicates the expectation, and the harness guarantees it. When an agent fails, the instinct is to add another line to the prompt. After a few months that instinct produces a long, contradictory rulebook in which every line patches one past mistake. OpenAI describes the same trap and the same escape: move knowledge to where it belongs, and turn rules into checks.
 
@@ -134,4 +134,4 @@ Open [examples/habit-tracker/AGENTS.md](../examples/habit-tracker/AGENTS.md). De
 - Anthropic's [prompt engineering documentation](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview) and OpenAI's [prompt engineering guide](https://platform.openai.com/docs/guides/prompt-engineering) cover structure, examples and model-specific behavior.
 - HumanLayer's [Skill Issue](https://humanlayer.dev/blog/skill-issue-harness-engineering-for-coding-agents) explains why they keep CLAUDE.md under 60 lines.
 
-**Next:** [05. Context Engineering for Harnesses](05-context-engineering.md)
+**Next lesson:** [Context Engineering for Harnesses](05-context-engineering.md)

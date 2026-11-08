@@ -1,9 +1,11 @@
-# 11. Feedback, Verification and the Steering Loop
+# Feedback, Verification and the Steering Loop
 
-> Guides make the first attempt good. Sensors catch what the guides missed. When a mistake repeats, improve both.
+Lesson 11 of 18 · Correction · about 50 minutes
 
-**You will learn** the guides-and-sensors model, the difference between computational and inferential controls, how to write feedback an agent can act on, where to verify instead of trusting, why self-review fails, and how the steering loop turns one-off fixes into a harness that improves.
-**Time:** 50 minutes · **Video:** [Verify instead of trusting: guides and sensors (1:10)](../videos/README.md#08-guides-and-sensors) · **Project:** [06. Guides and sensors](../projects/06-guides-and-sensors/)
+In this lesson you will learn the guides-and-sensors model, the difference between computational and inferential controls, how to write feedback an agent can act on, where to verify instead of trusting, why self-review fails, and how the steering loop turns one-off fixes into a harness that improves.
+
+**Video:** [Verify instead of trusting: guides and sensors (0:40)](../videos/README.md#08-guides-and-sensors) · **Project:** [Guides and Sensors](../projects/06-guides-and-sensors/)
+
 
 ---
 
@@ -51,7 +53,7 @@ zones. Fix: use timeutils.local_date(moment, habit.timezone); for weeks use
 timeutils.week_start(day).
 ```
 
-The second message lets the agent fix the problem on its next step without searching, guessing or asking. [Project 06](../projects/06-guides-and-sensors/) builds this rule with Python's AST, so comments and strings never trigger it.
+The second message lets the agent fix the problem on its next step without searching, guessing or asking. [Project 6](../projects/06-guides-and-sensors/) builds this rule with Python's AST, so comments and strings never trigger it.
 
 Two more rules from practice. HumanLayer's: success should be silent and failures verbose, because every line of feedback costs context. And never feed the agent a flaky check; it teaches the agent to chase problems that do not exist.
 
@@ -151,7 +153,7 @@ A guide (AGENTS.md pointer plus an on-open hook), a sensor (a lint rule whose me
 
 ## Try it
 
-Do [Project 06: Guides and sensors](../projects/06-guides-and-sensors/): an AST lint rule with WHAT, WHY and FIX messages, a post-edit hook that stays silent on success, and an on-read hook that delivers guidance at the right moment.
+Do [Project 6: Guides and sensors](../projects/06-guides-and-sensors/): an AST lint rule with WHAT, WHY and FIX messages, a post-edit hook that stays silent on success, and an on-read hook that delivers guidance at the right moment.
 
 ## Go deeper
 
@@ -159,4 +161,4 @@ Do [Project 06: Guides and sensors](../projects/06-guides-and-sensors/): an AST 
 - LangChain, [Improving deep agents with harness engineering](https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering): pre-completion checks, loop detection and trace analysis in a real benchmark climb.
 - Anthropic, [Harness design for long-running application development](https://www.anthropic.com/engineering/harness-design-long-running-apps): generator and evaluator, sprint contracts.
 
-**Next:** [12. Loop Engineering](12-loop-engineering.md)
+**Next lesson:** [Loop Engineering](12-loop-engineering.md)

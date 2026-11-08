@@ -1,6 +1,6 @@
-# Project 07: Traces and Diagnosis
+# Read Traces and Diagnose Failures
 
-**Lessons:** [10. Observability](../../course/10-observability.md), [15. Diagnosing agent failures](../../course/15-diagnosing-agent-failures.md) · **Time:** 75 minutes
+Project 7 of 11 · Goes with [Logs, Traces and Observability](../../course/10-observability.md), [Diagnosing Agent Failures](../../course/15-diagnosing-agent-failures.md) · about 75 minutes
 
 ## What you build
 

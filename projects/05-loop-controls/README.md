@@ -1,6 +1,6 @@
-# Project 05: Loop Controls
+# Loop Controls That Stop for a Reason
 
-**Lesson:** [12. Loop engineering](../../course/12-loop-engineering.md) · **Time:** 60 minutes
+Project 5 of 11 · Goes with [Loop Engineering](../../course/12-loop-engineering.md) · about 60 minutes
 
 ## What you build
 
@@ -24,4 +24,4 @@ All seven tests pass, and for each control you can name the runaway-loop cause i
 ## Stretch goals
 
 - Add jitter to `backoff_delays` and a test that two clients do not retry in lockstep.
-- Add `stop_reason` to Project 01's loop.
+- Add `stop_reason` to Project 1's loop.

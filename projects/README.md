@@ -4,15 +4,15 @@ Eleven hands-on projects. Each one builds one part of a harness as small, tested
 
 | # | Project | You build | Lesson | Time |
 |---|---|---|---|---|
-| 01 | [Agent loop](01-agent-loop/) | A complete agent loop, then run it on a real model | 02 | 45 min |
-| 02 | [Tool design](02-tool-design/) | Tools that search, shape output and fail helpfully | 06 | 60 min |
-| 03 | [Permissions and sandbox](03-permissions-and-sandbox/) | Deny-first rules, a path guard, env scrubbing, trifecta check, a Docker sandbox | 07 | 75 min |
-| 04 | [Long-running state](04-long-running-state/) | Initializer, resume routine, verified completion, checkpoints, rollback | 08 | 75 min |
-| 05 | [Loop controls](05-loop-controls/) | Budgets, progress and repeat detection, backoff, circuit breaker | 12 | 60 min |
-| 06 | [Guides and sensors](06-guides-and-sensors/) | An AST lint rule written for agents, and the hooks that run it | 11 | 60 min |
-| 07 | [Traces and diagnosis](07-traces-and-diagnosis/) | Trace analysis code, then diagnose four recorded failed runs | 10, 15 | 75 min |
-| 08 | [Evals](08-evals/) | pass@k, pass^k, confidence intervals, a two-order judge, judge agreement | 09 | 75 min |
-| 09 | [Graph workflow](09-graph-workflow/) | A small graph engine with interrupts, then the same workflow on LangGraph | 13 | 90 min |
+| 1 | [Agent loop](01-agent-loop/) | A complete agent loop, then run it on a real model | 2 | 45 min |
+| 2 | [Tool design](02-tool-design/) | Tools that search, shape output and fail helpfully | 6 | 60 min |
+| 3 | [Permissions and sandbox](03-permissions-and-sandbox/) | Deny-first rules, a path guard, env scrubbing, trifecta check, a Docker sandbox | 7 | 75 min |
+| 4 | [Long-running state](04-long-running-state/) | Initializer, resume routine, verified completion, checkpoints, rollback | 8 | 75 min |
+| 5 | [Loop controls](05-loop-controls/) | Budgets, progress and repeat detection, backoff, circuit breaker | 12 | 60 min |
+| 6 | [Guides and sensors](06-guides-and-sensors/) | An AST lint rule written for agents, and the hooks that run it | 11 | 60 min |
+| 7 | [Traces and diagnosis](07-traces-and-diagnosis/) | Trace analysis code, then diagnose four recorded failed runs | 10, 15 | 75 min |
+| 8 | [Evals](08-evals/) | pass@k, pass^k, confidence intervals, a two-order judge, judge agreement | 9 | 75 min |
+| 9 | [Graph workflow](09-graph-workflow/) | A small graph engine with interrupts, then the same workflow on LangGraph | 13 | 90 min |
 | 10 | [Capstone: full harness](10-capstone-full-harness/) | Run, ablate and improve the complete habit-tracker harness | 14 | 2 to 4 h |
 | 11 | [Support agent harness](11-support-agent-harness/) | Four guardrail layers for an agent that moves money | 17 | 75 min |
 

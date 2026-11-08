@@ -1,6 +1,6 @@
-# Project 08: Evals
+# Build an Eval Kit
 
-**Lesson:** [09. Guardrails, tests and evals](../../course/09-guardrails-tests-and-evals.md) · **Time:** 75 minutes
+Project 8 of 11 · Goes with [Guardrails, Tests and Evals](../../course/09-guardrails-tests-and-evals.md) · about 75 minutes
 
 ## What you build
 

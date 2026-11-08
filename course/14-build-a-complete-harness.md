@@ -1,9 +1,11 @@
-# 14. Build a Complete Harness
+# Build a Complete Harness
 
-> Work backward from a definition of success the harness can check. Add only what the task needs.
+Lesson 14 of 18 · Putting It Together · about 75 minutes
 
-**You will learn** the order in which to make harness decisions, how each decision maps to working code in `harnesslab`, how to run the result on a real ticket, and how to improve it from what the first runs show.
-**Time:** 75 minutes · **Project:** [10. Capstone: full harness and ablation study](../projects/10-capstone-full-harness/) · **Code:** [`harnesslab/presets.py`](../harnesslab/harnesslab/presets.py)
+In this lesson you will learn the order in which to make harness decisions, how each decision maps to working code in `harnesslab`, how to run the result on a real ticket, and how to improve it from what the first runs show.
+
+**Project:** [Capstone: Run, Ablate and Improve a Full Harness](../projects/10-capstone-full-harness/) · **Code:** [`harnesslab/presets.py`](../harnesslab/harnesslab/presets.py)
+
 
 ---
 
@@ -43,7 +45,7 @@ A short [AGENTS.md](../examples/habit-tracker/AGENTS.md): what the project is, t
 
 ### 4. Context and repository preparation
 
-Load three things at the start: AGENTS.md, the task, and progress notes from earlier sessions on the same ticket. Everything else arrives just in time through search and read tools. Much context engineering happens before the agent runs, in the repository: move the streak spec into `docs/`, and **delete the stale 2024 design note** that says weeks start on Sunday. (The example keeps it so you can watch agents trip on it; [Project 07](../projects/07-traces-and-diagnosis/)'s run A does.) Shape tool outputs: tests return failures only, search returns enough hits for the helper to appear.
+Load three things at the start: AGENTS.md, the task, and progress notes from earlier sessions on the same ticket. Everything else arrives just in time through search and read tools. Much context engineering happens before the agent runs, in the repository: move the streak spec into `docs/`, and **delete the stale 2024 design note** that says weeks start on Sunday. (The example keeps it so you can watch agents trip on it; [Project 7](../projects/07-traces-and-diagnosis/)'s run A does.) Shape tool outputs: tests return failures only, search returns enough hits for the helper to appear.
 
 ### 5. Tools
 
@@ -190,7 +192,7 @@ hooks         done        succeeded     PASS       14  habit_tracker/streaks.py,
 permissions   done        succeeded     PASS       17  habit_tracker/streaks.py, tests/test_weekly_streak.py
 ```
 
-Read the disagreements. Without the verifier, or with only the agent's own tests, the harness reports success on broken code. Without permissions, the agent edited the config, verification flagged the change, and the agent reverted it, at the cost of three extra iterations: one layer covered for another. The hooks row shows no difference because a scripted agent follows a fixed plan; a real model will differ. Run ablations with a real model several times before drawing conclusions, and remember from [Lesson 09](09-guardrails-tests-and-evals.md) that small samples rarely prove much.
+Read the disagreements. Without the verifier, or with only the agent's own tests, the harness reports success on broken code. Without permissions, the agent edited the config, verification flagged the change, and the agent reverted it, at the cost of three extra iterations: one layer covered for another. The hooks row shows no difference because a scripted agent follows a fixed plan; a real model will differ. Run ablations with a real model several times before drawing conclusions, and remember from [Lesson 9](09-guardrails-tests-and-evals.md) that small samples rarely prove much.
 
 Anthropic follows the same practice when models change: remove one component at a time, measure, keep what still carries weight ([harness design for long-running apps](https://www.anthropic.com/engineering/harness-design-long-running-apps)).
 
@@ -221,4 +223,4 @@ No. Verification happened to catch the forbidden change after the fact, and the 
 
 Do [Project 10: Capstone](../projects/10-capstone-full-harness/). Run the demo and the ablation, run a real model three times, write a one-page harness spec with the [template](../reference/templates/harness-spec.md), and add one improvement backed by a failing case.
 
-**Next:** [15. Diagnosing Agent Failures](15-diagnosing-agent-failures.md)
+**Next lesson:** [Diagnosing Agent Failures](15-diagnosing-agent-failures.md)

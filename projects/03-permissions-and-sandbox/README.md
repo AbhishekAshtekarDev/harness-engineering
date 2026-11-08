@@ -1,6 +1,6 @@
-# Project 03: Permissions and a Sandbox
+# Permissions and a Sandbox
 
-**Lesson:** [07. Sandboxes, permissions and security](../../course/07-sandboxes-permissions-and-security.md) · **Time:** 75 minutes · **Optional:** Docker
+Project 3 of 11 · Goes with [Sandboxes, Permissions and Security](../../course/07-sandboxes-permissions-and-security.md) · about 75 minutes · optional: Docker
 
 ## What you build
 
@@ -32,4 +32,4 @@ Rules steer normal behavior. Boundaries hold when rules miss. One test, `test_ru
 ## Stretch goals
 
 - Add an egress allow-list with a proxy container instead of `--network none`.
-- Wire `check_write` into Project 01's file tool.
+- Wire `check_write` into Project 1's file tool.

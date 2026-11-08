@@ -1,9 +1,11 @@
-# 08. State, Memory and Long-Running Work
+# State, Memory and Long-Running Work
 
-> Anything the next session needs must be written somewhere the last session cannot take with it.
+Lesson 8 of 18 · Continuity · about 50 minutes
 
-**You will learn** why bigger context windows do not solve long tasks, how to keep durable state, which kinds of memory exist and how they go wrong, and the initializer, feature-list and resume pattern that makes multi-session work reliable.
-**Time:** 50 minutes · **Video:** [Long-running agents (1:10)](../videos/README.md#07-long-running-agents) · **Project:** [04. Long-running state](../projects/04-long-running-state/)
+In this lesson you will learn why bigger context windows do not solve long tasks, how to keep durable state, which kinds of memory exist and how they go wrong, and the initializer, feature-list and resume pattern that makes multi-session work reliable.
+
+**Video:** [Long-running agents (0:37)](../videos/README.md#07-long-running-agents) · **Project:** [Make Work Survive Across Sessions](../projects/04-long-running-state/)
+
 
 ---
 
@@ -15,10 +17,7 @@ A **long-running task** is any task larger than one context window or one uninte
 
 ## Why a bigger window does not fix it
 
-1. **Quality drops before size runs out.** Context rot ([Lesson 05](05-context-engineering.md)) means days of history in one window produce worse decisions.
-2. **Sessions end for reasons unrelated to size.** A crash ends the session at 10% full as surely as at 90%.
-3. **History goes stale.** Old failures that were fixed hours ago sit next to current facts, and the model cannot tell which is which.
-4. **Every call pays for all of it.** A longer history makes each step slower and more expensive.
+Quality drops before size runs out: context rot ([Lesson 5](05-context-engineering.md)) means days of history in one window produce worse decisions. Sessions also end for reasons that have nothing to do with size, and a crash ends one at 10% full as surely as at 90%. History goes stale, too. Failures that were fixed hours ago sit next to current facts, and the model cannot tell which is which. And every call pays for all of it, so a longer history makes each step slower and more expensive.
 
 Anthropic tested this directly. A frontier model running across many windows with compaction still failed to build a production-quality web app clone from a high-level prompt ([Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)). It failed in two ways: it tried to build everything at once and ran out of context mid-feature, and later sessions saw partial progress and declared the job done. The fix was a harness that tracked the work outside the model.
 
@@ -76,10 +75,7 @@ flowchart TB
 Details that matter:
 
 - **The feature list is JSON**, with more than 200 entries in Anthropic's web-app example, each a behavior with steps and a `passes` flag starting at `false`. Anthropic found models less likely to overwrite JSON inappropriately than Markdown. Sessions may change only the `passes` field.
-- **One feature per session.** Left alone, the agent tried to build too much and ran out of context mid-feature. One feature, then commit, update the progress file and end, turns every context boundary into a clean stopping point.
-- **Verify before marking.** Agents marked features complete without end-to-end testing. Performance improved substantially when the agent tested as a human user would, with browser automation.
-- **Protect the tests.** The prompt states that removing or editing tests is unacceptable, and the harness can back that with read-only test files.
-- **Same harness, two prompts.** The initializer and the coding agent shared the system prompt, tools and harness; only the first user message differed.
+Left alone, the agent tried to build too much and ran out of context halfway through a feature. Limiting it to one feature per session, then a commit, a progress update and a clean end, turned every context boundary into a natural stopping point. Agents also marked features complete without testing them end to end, and performance improved substantially once the agent tested as a human user would, through browser automation. The prompt told the agent that removing or editing tests was unacceptable, and a harness can back that request with read-only test files. One detail is easy to miss: the initializer and the coding agent shared the same system prompt, tools and harness, and only their first user message differed.
 
 The progress file serves people too. A developer who wants to know where things stand reads the same file the agent reads.
 
@@ -106,7 +102,7 @@ Records drift from reality. A progress file can claim a feature works while its 
 - give each shared record one writer, or use tools that prevent simultaneous edits;
 - end every session in a clean state, which Anthropic describes as code appropriate to merge: no half-finished changes and no undocumented known bugs.
 
-[Project 04](../projects/04-long-running-state/) has a test where someone edits the feature list by hand to mark an unbuilt feature as passing. The resume routine re-verifies and flags it.
+[Project 4](../projects/04-long-running-state/) has a test where someone edits the feature list by hand to mark an unbuilt feature as passing. The resume routine re-verifies and flags it.
 
 ## Check yourself
 
@@ -127,11 +123,11 @@ Treat it as a proposal from untrusted content. Record its source, route it to a 
 
 ## Try it
 
-Do [Project 04: Long-running state](../projects/04-long-running-state/). You build the initializer, the resume routine, verification-gated feature completion, checkpoints with rollback, and the feature-list guard, then pass tests that simulate a crash mid-feature and a dishonest record.
+Do [Project 4: Long-running state](../projects/04-long-running-state/). You build the initializer, the resume routine, verification-gated feature completion, checkpoints with rollback, and the feature-list guard, then pass tests that simulate a crash mid-feature and a dishonest record.
 
 ## Go deeper
 
 - Anthropic, [Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents) and [The components of agent memory](https://www.anthropic.com/research/components-of-agent-memory).
 - Lilian Weng, [Harness Engineering for Self-Improvement](https://lilianweng.github.io/posts/2026-07-04-harness/): durable state in files, not context.
 
-**Next:** [09. Guardrails, Tests and Evals](09-guardrails-tests-and-evals.md)
+**Next lesson:** [Guardrails, Tests and Evals](09-guardrails-tests-and-evals.md)

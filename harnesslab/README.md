@@ -40,8 +40,8 @@ python -m harnesslab trace runs/HT-142.jsonl
 
 ## Limits, on purpose
 
-- The workspace is a copied folder and commands run as your user. That organizes the work; it does not isolate it. For real isolation, run the harness inside the container from [Project 03](../projects/03-permissions-and-sandbox/), or use an OS sandbox.
-- Command rules match text. They steer behavior and are easy to bypass on purpose. Lesson 07 explains why the sandbox, not the rules, is the boundary.
+- The workspace is a copied folder and commands run as your user. That organizes the work; it does not isolate it. For real isolation, run the harness inside the container from [Project 3](../projects/03-permissions-and-sandbox/), or use an OS sandbox.
+- Command rules match text. They steer behavior and are easy to bypass on purpose. Lesson 7 explains why the sandbox, not the rules, is the boundary.
 - The token counts in the demo are estimates (four characters per token).
 
 harnesslab is a teaching harness. For production work, use a maintained framework or product and apply the same design decisions.

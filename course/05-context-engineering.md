@@ -1,9 +1,11 @@
-# 05. Context Engineering for Harnesses
+# Context Engineering for Harnesses
 
-> The context window is a desk, not a filing cabinet. Put on it only what this step needs.
+Lesson 5 of 18 · Guidance · about 45 minutes
 
-**You will learn** what fills a working agent's context, how to select and shape it, why long contexts fail, and when to compact, reset or hand work to a sub-agent.
-**Time:** 45 minutes · **Video:** [Context rot, compaction and resets (1:15)](../videos/README.md#04-context-rot-compaction-and-resets)
+In this lesson you will learn what fills a working agent's context, how to select and shape it, why long contexts fail, and when to compact, reset or hand work to a sub-agent.
+
+**Video:** [Context rot, compaction and resets (0:39)](../videos/README.md#04-context-rot-compaction-and-resets)
+
 
 ---
 
@@ -17,11 +19,11 @@ Twelve steps into the weekly streak task, the habit-tracker agent's context hold
 |---|---|---|---|
 | Stable instructions | System prompt, AGENTS.md | 1k to 30k tokens | You, once |
 | Task | The ticket, the plan | 0.5k to 3k | Intake step |
-| Tool definitions | Names, descriptions, schemas | 1k to 25k+ | Toolset design (Lesson 06) |
+| Tool definitions | Names, descriptions, schemas | 1k to 25k+ | Toolset design (Lesson 6) |
 | Retrieved material | Spec, `streaks.py`, `timeutils.py`, a test | 2k to 50k | The agent's searches, retrieval |
 | Tool results | Search hits, a test run, a diff | Unbounded without shaping | Tool output design |
 | History | Every earlier call and result | Grows every step | Compaction policy |
-| Notes and memory | Progress notes, recalled facts | 0.5k to 5k | State and memory design (Lesson 08) |
+| Notes and memory | Progress notes, recalled facts | 0.5k to 5k | State and memory design (Lesson 8) |
 
 Every piece competes for the model's attention. Treat the window like an operating system treats RAM: something has to decide what to load, what to keep and what to release, and in an agent system that something is the harness.
 
@@ -91,7 +93,7 @@ flowchart TB
 
 **Compaction** summarizes a context that is near its limit and continues from the summary. Claude Code keeps architectural decisions, unresolved bugs and implementation details and drops redundant tool output. The risk is a summary that drops a detail whose importance appears later. Anthropic advises tuning compaction for recall first, then precision. The Manus team adds a counterintuitive lesson: **leave the wrong turns in**. Keep failed actions and their errors visible so the model does not repeat them.
 
-**A context reset** starts a completely fresh window with only what is needed to continue: the task, the current state and handoff notes. It carries none of the accumulated confusion. It works only if the agent wrote its progress down before the reset, which [Lesson 08](08-state-memory-and-long-running-work.md) builds. Anthropic found that one model showed "context anxiety," wrapping up early as its window filled; resets with structured handoffs fixed it where compaction did not, while a later model needed resets far less. Tune this per model, and retest after upgrades.
+**A context reset** starts a completely fresh window with only what is needed to continue: the task, the current state and handoff notes. It carries none of the accumulated confusion. It works only if the agent wrote its progress down before the reset, which [Lesson 8](08-state-memory-and-long-running-work.md) builds. Anthropic found that one model showed "context anxiety," wrapping up early as its window filled; resets with structured handoffs fixed it where compaction did not, while a later model needed resets far less. Tune this per model, and retest after upgrades.
 
 **Sub-agents** isolate context. A sub-agent explores a question in its own window and returns a condensed summary, which Anthropic suggests keeping to roughly 1,000 to 2,000 tokens, so the main agent's window stays focused. [Lesson 13](13-graphs-and-multi-agent-systems.md) covers the token cost of doing this.
 
@@ -150,4 +152,4 @@ In [harnesslab/harnesslab/tools.py](../harnesslab/harnesslab/tools.py), read `su
 - Manus, [Context Engineering for AI Agents: Lessons from Building Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus): KV-cache design, restorable compression, the filesystem as memory.
 - Chroma, [Context Rot](https://www.trychroma.com/research/context-rot): the 18-model study.
 
-**Next:** [06. Tools, MCP and Agent Skills](06-tools-mcp-and-skills.md)
+**Next lesson:** [Tools, MCP and Agent Skills](06-tools-mcp-and-skills.md)

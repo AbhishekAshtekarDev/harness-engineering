@@ -1,6 +1,6 @@
-# Project 01: Build an Agent Loop from Scratch
+# Build an Agent Loop from Scratch
 
-**Lesson:** [02. How an AI agent works](../../course/02-how-an-agent-works.md) · **Time:** 45 minutes · **Needs:** Python 3.10+, pytest
+Project 1 of 11 · Goes with [How an AI Agent Works](../../course/02-how-an-agent-works.md) · about 45 minutes · needs Python 3.10+, pytest
 
 ## What you build
 

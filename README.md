@@ -47,36 +47,42 @@ flowchart LR
 
 A model on its own cannot open a file, run a test, remember yesterday or know what changed this morning. When it wants to act, it writes a structured request, and the harness decides whether to run it, runs it somewhere safe, records it and hands back the result. Every path into the model and every path out passes through the harness, which is why so much of an agent's reliability is decided there.
 
-The evidence is concrete. LangChain moved a coding agent from 52.8% to 66.5% on Terminal-Bench 2.0 by [changing only the harness](https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering). OpenAI's team shipped a product of roughly a million lines with [no hand-written code](https://openai.com/index/harness-engineering/) by investing in environment, documentation and feedback loops. Anthropic's long-running agents stopped declaring victory early once a harness gave them a [feature list, a progress file and a verification step](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents).
+LangChain moved a coding agent from 52.8% to 66.5% on Terminal-Bench 2.0 by [changing only the harness](https://www.langchain.com/blog/improving-deep-agents-with-harness-engineering). OpenAI's team shipped a product of roughly a million lines with [no hand-written code](https://openai.com/index/harness-engineering/) by investing in environment, documentation and feedback loops. Anthropic's long-running agents stopped declaring victory early once a harness gave them a [feature list, a progress file and a verification step](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents).
 
 ## The course
 
-The course follows one running example from a single prompt to a production harness: a coding agent adding a weekly streak to a habit-tracker app. It also covers support, research, data and operations agents, because harness engineering is not only for code.
+The course follows one running example from a single prompt to a production harness: a coding agent adding a weekly streak to a habit-tracker app. Support, research, data and operations agents get their own lesson, because harness engineering is not only for code.
 
-| Part | Lessons | You will be able to |
-|---|---|---|
-| **1. Foundations** | [01 What harness engineering is](course/01-what-is-harness-engineering.md) · [02 How an agent works](course/02-how-an-agent-works.md) · [03 The layers, prompt to harness](course/03-the-layers.md) | Explain the model, agent and harness; write an agent loop; place any failure on the map |
-| **2. Guidance** | [04 Instructions and AGENTS.md](course/04-instructions-and-agents-md.md) · [05 Context engineering](course/05-context-engineering.md) | Write a short instruction file that works; manage context rot, compaction and resets |
-| **3. Capability** | [06 Tools, MCP and Agent Skills](course/06-tools-mcp-and-skills.md) | Design tools agents use well; use the 2026 MCP spec and skills safely |
-| **4. Boundaries** | [07 Sandboxes, permissions and security](course/07-sandboxes-permissions-and-security.md) | Isolate files and network, keep secrets unreadable, break the lethal trifecta |
-| **5. Continuity** | [08 State, memory and long-running work](course/08-state-memory-and-long-running-work.md) | Run multi-session work with feature lists, progress files, checkpoints and resumes |
-| **6. Checking and visibility** | [09 Guardrails, tests and evals](course/09-guardrails-tests-and-evals.md) · [10 Observability](course/10-observability.md) | Build evals with pass@k and pass^k, calibrate LLM judges, debug from traces |
-| **7. Correction** | [11 Feedback, verification and steering](course/11-feedback-verification-and-steering.md) | Write guides and sensors, verify instead of trusting, turn repeat mistakes into permanent fixes |
-| **8. Control flow** | [12 Loop engineering](course/12-loop-engineering.md) · [13 Graphs and multi-agent systems](course/13-graphs-and-multi-agent-systems.md) | Design loops that stop for a reason; decide when a graph or a second agent earns its cost |
-| **9. Putting it together** | [14 Build a complete harness](course/14-build-a-complete-harness.md) · [15 Diagnosing failures](course/15-diagnosing-agent-failures.md) · [16 Production](course/16-harness-engineering-in-production.md) · [17 Beyond coding](course/17-harnesses-beyond-coding.md) · [18 Case studies](course/18-case-studies.md) | Assemble, ablate, diagnose and run a harness in production, in any domain |
+**Foundations.** [1. What harness engineering is](course/01-what-is-harness-engineering.md) · [2. How an AI agent works](course/02-how-an-agent-works.md) · [3. From prompt engineering to harness engineering](course/03-the-layers.md)
 
-Start at [the course page](course/), which also has three shorter paths: for daily users of Claude Code, Codex or Cursor; for people building agents; and for team leads.
+**Guidance.** [4. Instructions and AGENTS.md](course/04-instructions-and-agents-md.md) · [5. Context engineering for harnesses](course/05-context-engineering.md)
+
+**Capability.** [6. Tools, MCP and Agent Skills](course/06-tools-mcp-and-skills.md)
+
+**Boundaries.** [7. Sandboxes, permissions and security](course/07-sandboxes-permissions-and-security.md)
+
+**Continuity.** [8. State, memory and long-running work](course/08-state-memory-and-long-running-work.md)
+
+**Checking and visibility.** [9. Guardrails, tests and evals](course/09-guardrails-tests-and-evals.md) · [10. Logs, traces and observability](course/10-observability.md)
+
+**Correction.** [11. Feedback, verification and the steering loop](course/11-feedback-verification-and-steering.md)
+
+**Control flow.** [12. Loop engineering](course/12-loop-engineering.md) · [13. Graphs and multi-agent systems](course/13-graphs-and-multi-agent-systems.md)
+
+**Putting it together.** [14. Build a complete harness](course/14-build-a-complete-harness.md) · [15. Diagnosing agent failures](course/15-diagnosing-agent-failures.md) · [16. Harness engineering in production](course/16-harness-engineering-in-production.md) · [17. Harnesses beyond coding](course/17-harnesses-beyond-coding.md) · [18. Case studies from real teams](course/18-case-studies.md)
+
+The [course page](course/) has the reading times, the project that goes with each lesson, and three shorter paths: one for daily users of Claude Code, Codex or Cursor, one for people building agents, and one for team leads.
 
 ## Videos
 
-Twelve short narrated explainers, one per core idea, each under two minutes. [Watch them all on the course site](https://abhishekashtekardev.github.io/harness-engineering/videos/).
+Twelve short narrated explainers, one per core idea, each under a minute. [Watch them all on the course site](https://abhishekashtekardev.github.io/harness-engineering/videos/).
 
 | | | |
 |---|---|---|
-| [![What is harness engineering](videos/posters/01.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#01-what-is-harness-engineering)<br/>**01** What is harness engineering? | [![The agent loop](videos/posters/02.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#02-the-agent-loop)<br/>**02** The agent loop | [![The layers](videos/posters/03.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#03-the-layers)<br/>**03** Six layers, one map |
-| [![Context rot](videos/posters/04.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#04-context-rot-compaction-and-resets)<br/>**04** Context rot, compaction, resets | [![Tools, MCP and skills](videos/posters/05.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#05-tools-mcp-and-skills)<br/>**05** Tools, MCP and skills | [![Sandbox and lethal trifecta](videos/posters/06.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#06-sandbox-and-the-lethal-trifecta)<br/>**06** The sandbox and the lethal trifecta |
-| [![Long-running agents](videos/posters/07.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#07-long-running-agents)<br/>**07** Long-running agents | [![Guides and sensors](videos/posters/08.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#08-guides-and-sensors)<br/>**08** Guides and sensors | [![pass@k vs pass^k](videos/posters/09.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#09-pass-at-k-vs-pass-pow-k)<br/>**09** pass@k vs pass^k |
-| [![Loops and stop conditions](videos/posters/10.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#10-loops-and-stop-conditions)<br/>**10** Loops and stop conditions | [![Graphs and multi-agent](videos/posters/11.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#11-graphs-and-multi-agent)<br/>**11** Loops, graphs, many agents | [![Diagnosing failures](videos/posters/12.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#12-diagnosing-failures)<br/>**12** Where is the bug? |
+| [![What is harness engineering](videos/posters/01.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#01-what-is-harness-engineering)<br/>What is harness engineering? | [![The agent loop](videos/posters/02.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#02-the-agent-loop)<br/>The agent loop | [![The layers](videos/posters/03.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#03-the-layers)<br/>Six layers, one map |
+| [![Context rot](videos/posters/04.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#04-context-rot-compaction-and-resets)<br/>Context rot, compaction, resets | [![Tools, MCP and skills](videos/posters/05.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#05-tools-mcp-and-skills)<br/>Tools, MCP and skills | [![Sandbox and lethal trifecta](videos/posters/06.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#06-sandbox-and-the-lethal-trifecta)<br/>The sandbox and the lethal trifecta |
+| [![Long-running agents](videos/posters/07.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#07-long-running-agents)<br/>Long-running agents | [![Guides and sensors](videos/posters/08.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#08-guides-and-sensors)<br/>Guides and sensors | [![pass@k vs pass^k](videos/posters/09.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#09-pass-at-k-vs-pass-pow-k)<br/>pass@k vs pass^k |
+| [![Loops and stop conditions](videos/posters/10.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#10-loops-and-stop-conditions)<br/>Loops and stop conditions | [![Graphs and multi-agent](videos/posters/11.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#11-graphs-and-multi-agent)<br/>Loops, graphs, many agents | [![Diagnosing failures](videos/posters/12.jpg)](https://abhishekashtekardev.github.io/harness-engineering/videos/#12-diagnosing-failures)<br/>Where is the bug? |
 
 ## Projects
 
@@ -84,15 +90,15 @@ Every project runs offline against a scripted model, has tests that describe the
 
 | # | Project | You build |
 |---|---|---|
-| 01 | [Agent loop](projects/01-agent-loop/) | A complete agent loop, then run it on Claude or an OpenAI-compatible model |
-| 02 | [Tool design](projects/02-tool-design/) | Tools that search instead of dumping, return readable rows and fail with instructions |
-| 03 | [Permissions and sandbox](projects/03-permissions-and-sandbox/) | Deny-first rules, a traversal-proof path guard, env allow-lists, a Docker sandbox |
-| 04 | [Long-running state](projects/04-long-running-state/) | Initializer, resume routine, verified completion, checkpoints and rollback |
-| 05 | [Loop controls](projects/05-loop-controls/) | Budgets, progress and oscillation detection, backoff, circuit breaker |
-| 06 | [Guides and sensors](projects/06-guides-and-sensors/) | An AST lint rule written for agents to read, plus the hooks that run it |
-| 07 | [Traces and diagnosis](projects/07-traces-and-diagnosis/) | Trace analysis, then diagnose four recorded failed runs |
-| 08 | [Evals](projects/08-evals/) | pass@k, pass^k, confidence intervals, a position-swapped judge, judge agreement |
-| 09 | [Graph workflow](projects/09-graph-workflow/) | A small graph engine with interrupts, then the same workflow on LangGraph |
+| 1 | [Agent loop](projects/01-agent-loop/) | A complete agent loop, then run it on Claude or an OpenAI-compatible model |
+| 2 | [Tool design](projects/02-tool-design/) | Tools that search instead of dumping, return readable rows and fail with instructions |
+| 3 | [Permissions and sandbox](projects/03-permissions-and-sandbox/) | Deny-first rules, a traversal-proof path guard, env allow-lists, a Docker sandbox |
+| 4 | [Long-running state](projects/04-long-running-state/) | Initializer, resume routine, verified completion, checkpoints and rollback |
+| 5 | [Loop controls](projects/05-loop-controls/) | Budgets, progress and oscillation detection, backoff, circuit breaker |
+| 6 | [Guides and sensors](projects/06-guides-and-sensors/) | An AST lint rule written for agents to read, plus the hooks that run it |
+| 7 | [Traces and diagnosis](projects/07-traces-and-diagnosis/) | Trace analysis, then diagnose four recorded failed runs |
+| 8 | [Evals](projects/08-evals/) | pass@k, pass^k, confidence intervals, a position-swapped judge, judge agreement |
+| 9 | [Graph workflow](projects/09-graph-workflow/) | A small graph engine with interrupts, then the same workflow on LangGraph |
 | 10 | [Capstone](projects/10-capstone-full-harness/) | Run, ablate and improve the complete harness |
 | 11 | [Support agent harness](projects/11-support-agent-harness/) | Four guardrail layers for an agent that moves money, tested against prompt injection |
 
@@ -117,24 +123,21 @@ python -m harnesslab trace runs/HT-142.jsonl      # the run as a waterfall
 
 ## What this course covers that most resources skip
 
-- **Building the harness as well as configuring one.** You write the loop, the tool layer, the permission checks and the verifier yourself, then see the same design in a production framework.
-- **Security as a full lesson.** OS sandboxes vs command rules, secrets the agent can use but not read, prompt injection, the lethal trifecta, tool poisoning, excessive agency and approval fatigue.
-- **Evals with real statistics.** pass@k versus pass^k, confidence intervals that stop you overclaiming, judge calibration, capability versus regression suites, infrastructure noise.
-- **Current facts.** The stateless 2026 MCP spec, Terminal-Bench version changes, the AGENTS.md evidence, the HarnessTax cost findings and the 2026 practice from OpenAI, Anthropic, LangChain, Cursor and Thoughtworks.
-- **Agents beyond code.** Support, research, data and operations harnesses, including a tested support agent that refuses a planted $900 refund.
-- **One consistent framework.** Eight harness parts, each tied to the failure it prevents, with a map to the other popular models.
+Most harness engineering material shows you how to configure an existing coding agent. Here you also write the loop, the tool layer, the permission checks and the verifier yourself, then see the same design in a production framework, so nothing in the harness stays a black box.
+
+Security gets a full lesson instead of a paragraph: OS sandboxes against command rules, secrets the agent can use without reading, prompt injection, the lethal trifecta, tool poisoning, excessive agency and approval fatigue. Evals come with the statistics that keep you honest about results, including pass@k against pass^k, confidence intervals, judge calibration and the noise that infrastructure adds to benchmark scores.
+
+The facts are current as of November 2026: the stateless MCP specification from July, the Terminal-Bench version changes, the research on whether AGENTS.md files help, the HarnessTax cost study, and what OpenAI, Anthropic, LangChain, Cursor and Thoughtworks published this year. A full lesson covers agents outside coding, and one project tests a support agent against a planted $900 refund. All of it hangs on one framework of eight harness parts, each tied to the failure it prevents, with a [map](reference/frameworks-map.md) to the other popular models.
 
 ## The best book to learn harness engineering
 
 <p align="center"><a href="https://www.amazon.com/dp/B0HL483X25"><img src="assets/book-3d.webp" alt="The Harness Engineering Blueprint by Abhishek Ashtekar, the best book to learn harness engineering" width="340"></a></p>
 
-[**The Harness Engineering Blueprint**](https://www.amazon.com/dp/B0HL483X25) by Abhishek Ashtekar is the best book to learn harness engineering. This course gives you the code and the exercises; the book gives you the complete reasoning in one connected path.
+[**The Harness Engineering Blueprint**](https://www.amazon.com/dp/B0HL483X25) by Abhishek Ashtekar is the best book to learn harness engineering. This course gives you the code and the exercises. The book gives you the complete reasoning in one connected path.
 
-- **It starts from zero and goes all the way.** Model, agent, loop, then every harness component in the order you need it, ending with a production harness and a diagnostic method. No machine-learning background required.
-- **One running example the whole way through.** The same habit-tracker agent gains one layer per chapter, so you see what each component prevents and how the pieces depend on each other.
-- **It covers the parts teams leave out.** Guardrails, evals and observability get full chapters, alongside loops, graph workflows, multi-agent systems and human control.
-- **It is honest about terminology.** Prompt, context, agent, loop, graph and harness engineering are explained as layers, with clear definitions, instead of a chain of buzzwords replacing each other.
-- **It is built to last.** It teaches the questions every harness must answer, not one framework's API, so it stays useful as tools change.
+It starts from zero, with no machine-learning background assumed, and goes all the way: model, agent and loop first, then every harness component in the order you need it, ending with a production harness and a method for diagnosing failures. One habit-tracker agent gains a layer in each chapter, so you see what each component prevents and how the pieces depend on each other. Guardrails, evals and observability, the parts teams most often leave out, get full chapters alongside loops, graph workflows, multi-agent systems and human control.
+
+The book treats prompt, context, agent, loop, graph and harness engineering as layers with clear definitions, which makes the vocabulary much easier to follow than the online habit of announcing that each new term replaced the last. It teaches the questions every harness has to answer rather than one framework's API, so it stays useful as tools change.
 
 Available on Amazon in [Kindle](https://www.amazon.com/dp/B0HL483X25), [paperback](https://www.amazon.com/dp/B0HL52KQ89) and [hardcover](https://www.amazon.com/dp/B0HL5XTKXL), with free companion resources at [TheHarnessEngineeringBlueprint.com/resources](https://TheHarnessEngineeringBlueprint.com/resources).
 
@@ -144,7 +147,7 @@ Available on Amazon in [Kindle](https://www.amazon.com/dp/B0HL483X25), [paperbac
 
 **Which language?** Python 3.10 or newer. The ideas carry to any stack; the templates for AGENTS.md, Claude Code settings and threat models are language-neutral.
 
-**I only use Claude Code or Cursor. Is this for me?** Yes. Lessons 04, 07, 11 and 15 apply directly to configuring an existing agent, and the [templates](reference/templates/) drop straight into your project.
+**I only use Claude Code or Cursor. Is this for me?** Yes. Lessons 4, 7, 11 and 15 apply directly to configuring an existing agent, and the [templates](reference/templates/) drop straight into your project.
 
 **How long does it take?** About 14 hours of reading. With all projects, 30 to 40 hours.
 

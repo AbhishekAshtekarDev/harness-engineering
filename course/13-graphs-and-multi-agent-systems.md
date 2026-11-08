@@ -1,9 +1,11 @@
-# 13. Graphs and Multi-Agent Systems
+# Graphs and Multi-Agent Systems
 
-> A graph puts the process on paper where you can test it. Add an agent only when it solves a problem a simpler design cannot.
+Lesson 13 of 18 · Control Flow · about 60 minutes
 
-**You will learn** how to describe agent work as nodes, edges and shared state; when to make a step deterministic; how to bound cycles and design error paths and approval nodes; when multiple agents help and what they cost; handoffs versus agents-as-tools; and the documented ways multi-agent systems fail.
-**Time:** 60 minutes · **Video:** [Loops, graphs and many agents (1:10)](../videos/README.md#11-graphs-and-multi-agent) · **Project:** [09. Graph workflow](../projects/09-graph-workflow/)
+In this lesson you will learn how to describe agent work as nodes, edges and shared state; when to make a step deterministic; how to bound cycles and design error paths and approval nodes; when multiple agents help and what they cost; handoffs versus agents-as-tools; and the documented ways multi-agent systems fail.
+
+**Video:** [Loops, graphs and many agents (0:34)](../videos/README.md#11-graphs-and-multi-agent) · **Project:** [A Graph Workflow with Human Approval](../projects/09-graph-workflow/)
+
 
 ---
 
@@ -48,7 +50,7 @@ flowchart LR
 
 **Make it deterministic when code can do it.** Creating a branch, formatting, running tests, validating a schema, checking which files changed, opening a pull request and sending a notification are all code. Deterministic nodes are faster, cheaper, repeatable and testable with ordinary unit tests, and every step you move out of the model's hands is a step it cannot forget or skip. In a graph, testing sits on the path between building and review, and no route around it exists.
 
-**Give each agentic node only what its job needs.** The planner reads but cannot edit. The builder edits its own worktree but cannot open pull requests. The reviewer reads the change and the ticket and writes comments. Least privilege ([Lesson 07](07-sandboxes-permissions-and-security.md)) applied per step, with its own instructions and even its own model: a capable model for building, a cheaper one for classification.
+**Give each agentic node only what its job needs.** The planner reads but cannot edit. The builder edits its own worktree but cannot open pull requests. The reviewer reads the change and the ticket and writes comments. Least privilege ([Lesson 7](07-sandboxes-permissions-and-security.md)) applied per step, with its own instructions and even its own model: a capable model for building, a cheaper one for classification.
 
 **Route deterministically by default.** A rule-based router (any test failed: back to build) is cheap and predictable. A model-based router (is this message billing or technical?) handles language, and needs a schema that restricts its answer to valid branch names, plus its own eval, because a misrouted request travels confidently down the wrong path.
 
@@ -150,7 +152,7 @@ Handoff: routing is the workflow and the specialist should own the rest of the c
 
 ## Try it
 
-Do [Project 09: Graph workflow](../projects/09-graph-workflow/). You write a small graph engine with reducers, routers, a step limit and interrupt-and-resume, build the plan, build, test, review, approve workflow on it, then run the same workflow on LangGraph and compare.
+Do [Project 9: Graph workflow](../projects/09-graph-workflow/). You write a small graph engine with reducers, routers, a step limit and interrupt-and-resume, build the plan, build, test, review, approve workflow on it, then run the same workflow on LangGraph and compare.
 
 ## Go deeper
 
@@ -159,4 +161,4 @@ Do [Project 09: Graph workflow](../projects/09-graph-workflow/). You write a sma
 - Cemri et al., [Why Do Multi-Agent LLM Systems Fail?](https://arxiv.org/abs/2503.13657)
 - LangGraph [documentation](https://docs.langchain.com/oss/python/langgraph/overview): state, reducers, `Send`, interrupts and checkpointers.
 
-**Next:** [14. Build a Complete Harness](14-build-a-complete-harness.md)
+**Next lesson:** [Build a Complete Harness](14-build-a-complete-harness.md)

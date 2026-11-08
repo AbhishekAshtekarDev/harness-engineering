@@ -1,6 +1,6 @@
-# Project 10: Capstone: Run, Ablate and Improve a Full Harness
+# Capstone: Run, Ablate and Improve a Full Harness
 
-**Lesson:** [14. Build a complete harness](../../course/14-build-a-complete-harness.md) · **Time:** 2 to 4 hours · **Optional:** an API key
+Project 10 of 11 · Goes with [Build a Complete Harness](../../course/14-build-a-complete-harness.md) · about 2 to 4 hours · optional: an API key
 
 ## What you do
 

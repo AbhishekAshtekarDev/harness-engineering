@@ -1,9 +1,11 @@
-# 17. Harnesses Beyond Coding
+# Harnesses Beyond Coding
 
-> Change the domain and the eight parts stay. Only the answers change.
+Lesson 17 of 18 · Putting It Together · about 40 minutes
 
-**You will learn** how to apply the same eight-part harness to support, research, data analysis, operations and internal business agents, what is different about each, and what a real non-coding harness looks like.
-**Time:** 40 minutes · **Project:** [11. Support agent harness](../projects/11-support-agent-harness/)
+In this lesson you will learn how to apply the same eight-part harness to support, research, data analysis, operations and internal business agents, what is different about each, and what a real non-coding harness looks like.
+
+**Project:** [A Harness for a Support Agent That Moves Money](../projects/11-support-agent-harness/)
+
 
 ---
 
@@ -42,16 +44,13 @@ flowchart LR
 
 In the project's "injection in order data" scenario, an order note reads like an instruction to the AI to refund a $900 order belonging to someone else. The scan withholds the note from the context. The scripted model is written to be fooled anyway and calls the refund. The refund guard blocks it, because the order belongs to a different customer and was never confirmed. That last layer is the one that matters: it holds even when the model has been manipulated, because it checks facts in code instead of trusting the model's judgment.
 
-Support agents also show the workflow-plus-agent pattern from [Lesson 02](02-how-an-agent-works.md): a fixed workflow classifies and routes, and an agent handles the hard billing cases with a person approving large refunds. OpenAI's guidance names exactly these actions (cancelling orders, large refunds, payments) as ones that should trigger human oversight until the agent's record justifies more autonomy.
+Support agents also show the workflow-plus-agent pattern from [Lesson 2](02-how-an-agent-works.md): a fixed workflow classifies and routes, and an agent handles the hard billing cases with a person approving large refunds. OpenAI's guidance names exactly these actions (cancelling orders, large refunds, payments) as ones that should trigger human oversight until the agent's record justifies more autonomy.
 
 ## Research agents
 
 Research is where multiple agents earn their cost. Anthropic's research system used a lead agent and parallel subagents and beat a single agent by 90.2% on its internal eval, at roughly 15 times the tokens of a chat. Harness concerns specific to research:
 
-- **Effort scaling.** Write rules for how much effort a question deserves, or agents search forever for sources that do not exist. Anthropic's early version spawned 50 subagents for simple questions.
-- **Source quality.** Guidance on which sources count, and a checker that confirms each claim against a cited source.
-- **The trifecta.** A research agent browses untrusted pages. Keep that agent away from private data and from any ability to post or send, or split browsing into its own agent that returns summaries.
-- **Evaluation.** Anthropic started with about 20 real queries and an LLM judge scoring factual accuracy, citation accuracy, completeness, source quality and tool efficiency, plus human review for problems the judge missed.
+Research agents need rules for how much effort a question deserves, or they search forever for sources that do not exist; Anthropic's early version spawned 50 subagents for simple questions. They need guidance on which sources count and a checker that confirms each claim against a cited source. A research agent also browses untrusted pages, so keep it away from private data and from any ability to post or send, or split browsing into its own agent that returns summaries. For evaluation, Anthropic started with about 20 real queries and an LLM judge that scored factual accuracy, citation accuracy, completeness, source quality and tool efficiency, plus human review for the problems the judge missed.
 
 ## Data analysis agents
 
@@ -113,4 +112,4 @@ Split it: one agent browses with no wiki access and returns summaries; another r
 
 Do [Project 11: Support agent harness](../projects/11-support-agent-harness/), then sketch the eight-part table for an agent in your own work using the [harness spec template](../reference/templates/harness-spec.md).
 
-**Next:** [18. Real Harnesses: Case Studies](18-case-studies.md)
+**Next lesson:** [Case Studies from Real Teams](18-case-studies.md)

@@ -1,9 +1,11 @@
-# 09. Guardrails, Tests and Evals
+# Guardrails, Tests and Evals
 
-> A test checks the code. An eval checks the agent. A guardrail stops the run. Know which question you are asking.
+Lesson 9 of 18 · Checking and Visibility · about 60 minutes
 
-**You will learn** the four families of checks and where each belongs, how agents game tests and how to stop it, how to design evals with tasks, trials and graders, why pass@k and pass^k tell different stories, and how to use an LLM judge without fooling yourself.
-**Time:** 60 minutes · **Video:** [pass@k vs pass^k (1:00)](../videos/README.md#09-pass-at-k-vs-pass-pow-k) · **Project:** [08. Evals](../projects/08-evals/) · **Template:** [Eval task and rubric](../reference/templates/eval-task.md)
+In this lesson you will learn the four families of checks and where each belongs, how agents game tests and how to stop it, how to design evals with tasks, trials and graders, why pass@k and pass^k tell different stories, and how to use an LLM judge without fooling yourself.
+
+**Video:** [pass@k vs pass^k (0:31)](../videos/README.md#09-pass-at-k-vs-pass-pow-k) · **Project:** [Build an Eval Kit](../projects/08-evals/) · **Template:** [Eval task and rubric](../reference/templates/eval-task.md)
+
 
 ---
 
@@ -100,7 +102,7 @@ The 2023 paper by Zheng and colleagues that popularized [LLM-as-judge](https://a
 | Self-enhancement (favors its own model family's writing) | Use a different model from the one that did the work |
 | Weak on reasoning-heavy questions | Prefer code graders where a fixed check exists |
 
-Give the judge a specific rubric, judge one criterion per call, require structured output, and give it an **UNKNOWN** option so it does not invent a verdict. Then check it against human labels on a sample and keep checking. [Project 08](../projects/08-evals/) implements the two-order comparison and Cohen's kappa for judge-human agreement.
+Give the judge a specific rubric, judge one criterion per call, require structured output, and give it an **UNKNOWN** option so it does not invent a verdict. Then check it against human labels on a sample and keep checking. [Project 8](../projects/08-evals/) implements the two-order comparison and Cohen's kappa for judge-human agreement.
 
 ### pass@k and pass^k
 
@@ -109,7 +111,7 @@ Agents vary from trial to trial, so you read rates, not single results. Two numb
 - **pass@k**: the probability that at least one of k attempts succeeds. Right when a person can retry and one success is enough.
 - **pass^k**: the probability that all k attempts succeed. Right when the agent must work every time, such as a customer-facing or unattended agent.
 
-With 75% success per trial, pass^3 is about 0.75³, roughly 42%, while pass@3 is about 98%. The two numbers diverge fast as k grows. The eval suite in [Project 08](../projects/08-evals/) shows it with two scripted agents:
+With 75% success per trial, pass^3 is about 0.75³, roughly 42%, while pass@3 is about 98%. The two numbers diverge fast as k grows. The eval suite in [Project 8](../projects/08-evals/) shows it with two scripted agents:
 
 ```text
 agent              passed          95% CI   pass@3   pass^3
@@ -153,7 +155,7 @@ Calibration. Compare judge and human labels case by case, compute agreement (for
 
 ## Try it
 
-Do [Project 08: Evals](../projects/08-evals/). You implement pass@k, pass^k, Wilson confidence intervals, a comparison that refuses to overclaim, a two-order pairwise judge, and Cohen's kappa, then run `run_suite.py` against two scripted agents on the habit-tracker ticket.
+Do [Project 8: Evals](../projects/08-evals/). You implement pass@k, pass^k, Wilson confidence intervals, a comparison that refuses to overclaim, a two-order pairwise judge, and Cohen's kappa, then run `run_suite.py` against two scripted agents on the habit-tracker ticket.
 
 ## Go deeper
 
@@ -161,4 +163,4 @@ Do [Project 08: Evals](../projects/08-evals/). You implement pass@k, pass^k, Wil
 - OpenAI, [Separating signal from noise in coding evaluations](https://openai.com/index/separating-signal-from-noise-coding-evaluations/): why roughly 30% of SWE-Bench Pro tasks turned out to be broken, and what that means for your own task sets.
 - LangChain, [The most common questions about agent evals](https://www.langchain.com/blog/common-questions-about-agent-evals).
 
-**Next:** [10. Logs, Traces and Observability](10-observability.md)
+**Next lesson:** [Logs, Traces and Observability](10-observability.md)

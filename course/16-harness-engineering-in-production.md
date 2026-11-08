@@ -1,9 +1,11 @@
-# 16. Harness Engineering in Production
+# Harness Engineering in Production
 
-> In production the last mile becomes most of the journey. Version everything that shapes behavior, and re-test every assumption when the model changes.
+Lesson 16 of 18 · Putting It Together · about 60 minutes
 
-**You will learn** what changes when a harness moves from prototype to production: reliability targets, security against attackers, cost and caching, latency, model selection and upgrades, versioning and deployment, scale, governance, harnessability, drift, and how to simplify a harness as models improve.
-**Time:** 60 minutes · **Checklist:** [Production readiness](../reference/harness-checklist.md#production)
+In this lesson you will learn what changes when a harness moves from prototype to production: reliability targets, security against attackers, cost and caching, latency, model selection and upgrades, versioning and deployment, scale, governance, harnessability, drift, and how to simplify a harness as models improve.
+
+**Checklist:** [Production readiness](../reference/harness-checklist.md#production)
+
 
 ---
 
@@ -17,7 +19,7 @@ Plan for failures outside the agent. Providers have outages, APIs change, sandbo
 
 ## Security
 
-OWASP lists prompt injection first among risks for LLM applications, and any agent that reads outside content will meet injection attempts. The defenses are the layers from [Lesson 07](07-sandboxes-permissions-and-security.md): OS-level sandboxes, least privilege for every tool and credential, designs that keep the lethal trifecta out of any one agent, guardrails on inputs, tool calls and outputs, and audit trails. Production adds two practices:
+OWASP lists prompt injection first among risks for LLM applications, and any agent that reads outside content will meet injection attempts. The defenses are the layers from [Lesson 7](07-sandboxes-permissions-and-security.md): OS-level sandboxes, least privilege for every tool and credential, designs that keep the lethal trifecta out of any one agent, guardrails on inputs, tool calls and outputs, and audit trails. Production adds two practices:
 
 - **Review every new tool, MCP server and skill** before an agent can use it, as you would a third-party library.
 - **Keep adversarial tasks in the eval suite**, such as tickets containing injection attempts, so you know the defenses hold and notice when a change weakens them.
@@ -31,7 +33,7 @@ Harness design changes the bill more than many teams expect. The [HarnessTax stu
 | Control | What it does |
 |---|---|
 | Budgets per task, per loop per day, per team | Caps what any run can spend (Lesson 12) |
-| Shaped tool output, cleared old results | Fewer tokens per call (Lessons 05, 06) |
+| Shaped tool output, cleared old results | Fewer tokens per call (Lessons 5, 6) |
 | Fewer, dynamically loaded tools | Cursor cut static tool-description tokens by 60% this way |
 | Shorter system prompt | Cursor trimmed its prompt by about two thirds; token costs fell 7% with no quality loss |
 | **Prompt caching** | Reuses processing of an unchanged prompt prefix; Anthropic prices cache reads at roughly a tenth of normal input on most models, and caching also cuts latency |
@@ -141,4 +143,4 @@ Any two of: permissions and sandboxes (limit damage from attacks), verification 
 - OpenAI, [Harness engineering](https://openai.com/index/harness-engineering/): entropy, garbage collection and merge philosophy at high throughput.
 - HarnessTax, [harnesstax.github.io](https://harnesstax.github.io/): cost and success across 21 model and harness pairs.
 
-**Next:** [17. Harnesses Beyond Coding](17-harnesses-beyond-coding.md)
+**Next lesson:** [Harnesses Beyond Coding](17-harnesses-beyond-coding.md)

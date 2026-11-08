@@ -1,6 +1,6 @@
-# Project 02: Tool Design
+# Design Tools an Agent Can Use
 
-**Lesson:** [06. Tools, MCP and Agent Skills](../../course/06-tools-mcp-and-skills.md) · **Time:** 60 minutes
+Project 2 of 11 · Goes with [Tools, MCP and Agent Skills](../../course/06-tools-mcp-and-skills.md) · about 60 minutes
 
 ## What you build
 
